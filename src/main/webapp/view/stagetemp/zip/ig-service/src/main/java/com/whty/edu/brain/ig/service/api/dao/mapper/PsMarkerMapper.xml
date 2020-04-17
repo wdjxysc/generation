@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whty.edu.brain.ig.service.api.dao.PsMarkerDAO">
+		<resultMap type="com.whty.edu.brain.ig.service.api.vo.PsMarkerVO" id="PsMarkerMap">
+			<result column="id" property="id" jdbcType="BIGINT" />
+			<result column="marker_id" property="markerId" jdbcType="VARCHAR" />
+			<result column="exam_id" property="examId" jdbcType="VARCHAR" />
+			<result column="answer_sheet_item_id" property="answerSheetItemId" jdbcType="VARCHAR" />
+			<result column="person_id" property="personId" jdbcType="VARCHAR" />
+			<result column="org_id" property="orgId" jdbcType="VARCHAR" />
+			<result column="name" property="name" jdbcType="VARCHAR" />
+			<result column="role" property="role" jdbcType="VARCHAR" />
+			<result column="planned" property="planned" jdbcType="INTEGER" />
+			<result column="finished" property="finished" jdbcType="INTEGER" />
+			<result column="status" property="status" jdbcType="TINYINT" />
+			<result column="online" property="online" jdbcType="TINYINT" />
+			<result column="is_del" property="isDel" jdbcType="TINYINT" />
+		</resultMap>
+		<!-- 新增 -->
+    	<insert id="insertPsMarker" parameterType="com.whty.edu.brain.ig.service.api.vo.PsMarkerVO">
+    		insert into ps_marker(
+    			id,
+    			marker_id,
+    			exam_id,
+    			answer_sheet_item_id,
+    			person_id,
+    			org_id,
+    			name,
+    			role,
+    			planned,
+    			finished,
+    			status,
+    			online,
+    			is_del
+    		)values(
+    			#{id},
+    			#{markerId},
+    			#{examId},
+    			#{answerSheetItemId},
+    			#{personId},
+    			#{orgId},
+    			#{name},
+    			#{role},
+    			#{planned},
+    			#{finished},
+    			#{status},
+    			#{online},
+    			#{isDel}
+    		)
+    	</insert>
+    	<!-- 删除 -->
+    	<delete id="deletePsMarker" parameterType="com.whty.edu.brain.ig.service.api.vo.PsMarkerVO">
+    		delete from ps_marker
+    		<where>
+	    			<if test="id != null" >
+	    		and id = #{id}
+	    			</if>
+	    			<if test="markerId != null" >
+	    		and marker_id = #{markerId}
+	    			</if>
+	    			<if test="examId != null" >
+	    		and exam_id = #{examId}
+	    			</if>
+	    			<if test="answerSheetItemId != null" >
+	    		and answer_sheet_item_id = #{answerSheetItemId}
+	    			</if>
+	    			<if test="personId != null" >
+	    		and person_id = #{personId}
+	    			</if>
+	    			<if test="orgId != null" >
+	    		and org_id = #{orgId}
+	    			</if>
+	    			<if test="name != null" >
+	    		and name = #{name}
+	    			</if>
+	    			<if test="role != null" >
+	    		and role = #{role}
+	    			</if>
+	    			<if test="planned != null" >
+	    		and planned = #{planned}
+	    			</if>
+	    			<if test="finished != null" >
+	    		and finished = #{finished}
+	    			</if>
+	    			<if test="status != null" >
+	    		and status = #{status}
+	    			</if>
+	    			<if test="online != null" >
+	    		and online = #{online}
+	    			</if>
+	    			<if test="isDel != null" >
+	    		and is_del = #{isDel}
+	    			</if>
+    		</where>
+    	</delete>
+    	<!-- 更新 -->
+    	<update id="updatePsMarker" parameterType="com.whty.edu.brain.ig.service.api.vo.PsMarkerVO">
+    		update ps_marker
+    		<set>
+	    			<if test="id != null" >
+	    		id = #{id},
+	    			</if>
+	    			<if test="markerId != null" >
+	    		marker_id = #{markerId},
+	    			</if>
+	    			<if test="examId != null" >
+	    		exam_id = #{examId},
+	    			</if>
+	    			<if test="answerSheetItemId != null" >
+	    		answer_sheet_item_id = #{answerSheetItemId},
+	    			</if>
+	    			<if test="personId != null" >
+	    		person_id = #{personId},
+	    			</if>
+	    			<if test="orgId != null" >
+	    		org_id = #{orgId},
+	    			</if>
+	    			<if test="name != null" >
+	    		name = #{name},
+	    			</if>
+	    			<if test="role != null" >
+	    		role = #{role},
+	    			</if>
+	    			<if test="planned != null" >
+	    		planned = #{planned},
+	    			</if>
+	    			<if test="finished != null" >
+	    		finished = #{finished},
+	    			</if>
+	    			<if test="status != null" >
+	    		status = #{status},
+	    			</if>
+	    			<if test="online != null" >
+	    		online = #{online},
+	    			</if>
+	    			<if test="isDel != null" >
+	    		is_del = #{isDel},
+	    			</if>
+    		</set>
+    		<where>
+	    			<if test="id != null" >
+	    		and id = #{id}
+	    			</if>
+	    			<if test="markerId != null" >
+	    		and marker_id = #{markerId}
+	    			</if>
+	    			<if test="examId != null" >
+	    		and exam_id = #{examId}
+	    			</if>
+	    			<if test="answerSheetItemId != null" >
+	    		and answer_sheet_item_id = #{answerSheetItemId}
+	    			</if>
+	    			<if test="personId != null" >
+	    		and person_id = #{personId}
+	    			</if>
+	    			<if test="orgId != null" >
+	    		and org_id = #{orgId}
+	    			</if>
+	    			<if test="name != null" >
+	    		and name = #{name}
+	    			</if>
+	    			<if test="role != null" >
+	    		and role = #{role}
+	    			</if>
+	    			<if test="planned != null" >
+	    		and planned = #{planned}
+	    			</if>
+	    			<if test="finished != null" >
+	    		and finished = #{finished}
+	    			</if>
+	    			<if test="status != null" >
+	    		and status = #{status}
+	    			</if>
+	    			<if test="online != null" >
+	    		and online = #{online}
+	    			</if>
+	    			<if test="isDel != null" >
+	    		and is_del = #{isDel}
+	    			</if>
+    		</where>
+    	</update>
+    	<!-- 查询列表 -->
+    	<select id="listPsMarker" parameterType="com.whty.edu.brain.ig.service.api.vo.PsMarkerVO" resultMap="PsMarkerMap">
+    		select * from ps_marker
+    		<where>
+	    			<if test="id != null" >
+	    		and id = #{id}
+	    			</if>
+	    			<if test="markerId != null" >
+	    		and marker_id = #{markerId}
+	    			</if>
+	    			<if test="examId != null" >
+	    		and exam_id = #{examId}
+	    			</if>
+	    			<if test="answerSheetItemId != null" >
+	    		and answer_sheet_item_id = #{answerSheetItemId}
+	    			</if>
+	    			<if test="personId != null" >
+	    		and person_id = #{personId}
+	    			</if>
+	    			<if test="orgId != null" >
+	    		and org_id = #{orgId}
+	    			</if>
+	    			<if test="name != null" >
+	    		and name = #{name}
+	    			</if>
+	    			<if test="role != null" >
+	    		and role = #{role}
+	    			</if>
+	    			<if test="planned != null" >
+	    		and planned = #{planned}
+	    			</if>
+	    			<if test="finished != null" >
+	    		and finished = #{finished}
+	    			</if>
+	    			<if test="status != null" >
+	    		and status = #{status}
+	    			</if>
+	    			<if test="online != null" >
+	    		and online = #{online}
+	    			</if>
+	    			<if test="isDel != null" >
+	    		and is_del = #{isDel}
+	    			</if>
+    		</where>
+    	</select>
+</mapper>

@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whty.edu.brain.ig.service.api.dao.PsScoringMarkDAO">
+		<resultMap type="com.whty.edu.brain.ig.service.api.vo.PsScoringMarkVO" id="PsScoringMarkMap">
+			<result column="id" property="id" jdbcType="BIGINT" />
+			<result column="mark_id" property="markId" jdbcType="VARCHAR" />
+			<result column="exam_id" property="examId" jdbcType="VARCHAR" />
+			<result column="batch_id" property="batchId" jdbcType="VARCHAR" />
+			<result column="subject_id" property="subjectId" jdbcType="VARCHAR" />
+			<result column="sheet_id" property="sheetId" jdbcType="VARCHAR" />
+			<result column="answer_sheet_item_id" property="answerSheetItemId" jdbcType="VARCHAR" />
+			<result column="class_name" property="className" jdbcType="VARCHAR" />
+			<result column="student_name" property="studentName" jdbcType="VARCHAR" />
+			<result column="crypt_code" property="cryptCode" jdbcType="VARCHAR" />
+			<result column="zkzh" property="zkzh" jdbcType="VARCHAR" />
+			<result column="fetch_seq" property="fetchSeq" jdbcType="INTEGER" />
+			<result column="score" property="score" jdbcType="FLOAT" />
+			<result column="scores" property="scores" jdbcType="VARCHAR" />
+			<result column="fetch_time" property="fetchTime" jdbcType="TIMESTAMP" />
+			<result column="submit_time" property="submitTime" jdbcType="TIMESTAMP" />
+			<result column="resubmit_time" property="resubmitTime" jdbcType="TIMESTAMP" />
+			<result column="fetch_marker_id" property="fetchMarkerId" jdbcType="VARCHAR" />
+			<result column="submit_marker_id" property="submitMarkerId" jdbcType="VARCHAR" />
+			<result column="fetch_flag" property="fetchFlag" jdbcType="TINYINT" />
+			<result column="doubt" property="doubt" jdbcType="TINYINT" />
+			<result column="doubt_done" property="doubtDone" jdbcType="TINYINT" />
+			<result column="is_del" property="isDel" jdbcType="TINYINT" />
+			<result column="isExamineeMark" property="isExamineeMark" jdbcType="TINYINT" />
+			<result column="remark_marker_id" property="remarkMarkerId" jdbcType="VARCHAR" />
+		</resultMap>
+		<!-- 新增 -->
+    	<insert id="insertPsScoringMark" parameterType="com.whty.edu.brain.ig.service.api.vo.PsScoringMarkVO">
+    		insert into ps_scoring_mark(
+    			id,
+    			mark_id,
+    			exam_id,
+    			batch_id,
+    			subject_id,
+    			sheet_id,
+    			answer_sheet_item_id,
+    			class_name,
+    			student_name,
+    			crypt_code,
+    			zkzh,
+    			fetch_seq,
+    			score,
+    			scores,
+    			fetch_time,
+    			submit_time,
+    			resubmit_time,
+    			fetch_marker_id,
+    			submit_marker_id,
+    			fetch_flag,
+    			doubt,
+    			doubt_done,
+    			is_del,
+    			isExamineeMark,
+    			remark_marker_id
+    		)values(
+    			#{id},
+    			#{markId},
+    			#{examId},
+    			#{batchId},
+    			#{subjectId},
+    			#{sheetId},
+    			#{answerSheetItemId},
+    			#{className},
+    			#{studentName},
+    			#{cryptCode},
+    			#{zkzh},
+    			#{fetchSeq},
+    			#{score},
+    			#{scores},
+    			#{fetchTime},
+    			#{submitTime},
+    			#{resubmitTime},
+    			#{fetchMarkerId},
+    			#{submitMarkerId},
+    			#{fetchFlag},
+    			#{doubt},
+    			#{doubtDone},
+    			#{isDel},
+    			#{isExamineeMark},
+    			#{remarkMarkerId}
+    		)
+    	</insert>
+    	<!-- 删除 -->
+    	<delete id="deletePsScoringMark" parameterType="com.whty.edu.brain.ig.service.api.vo.PsScoringMarkVO">
+    		delete from ps_scoring_mark
+    		<where>
+	    			<if test="id != null" >
+	    		and id = #{id}
+	    			</if>
+	    			<if test="markId != null" >
+	    		and mark_id = #{markId}
+	    			</if>
+	    			<if test="examId != null" >
+	    		and exam_id = #{examId}
+	    			</if>
+	    			<if test="batchId != null" >
+	    		and batch_id = #{batchId}
+	    			</if>
+	    			<if test="subjectId != null" >
+	    		and subject_id = #{subjectId}
+	    			</if>
+	    			<if test="sheetId != null" >
+	    		and sheet_id = #{sheetId}
+	    			</if>
+	    			<if test="answerSheetItemId != null" >
+	    		and answer_sheet_item_id = #{answerSheetItemId}
+	    			</if>
+	    			<if test="className != null" >
+	    		and class_name = #{className}
+	    			</if>
+	    			<if test="studentName != null" >
+	    		and student_name = #{studentName}
+	    			</if>
+	    			<if test="cryptCode != null" >
+	    		and crypt_code = #{cryptCode}
+	    			</if>
+	    			<if test="zkzh != null" >
+	    		and zkzh = #{zkzh}
+	    			</if>
+	    			<if test="fetchSeq != null" >
+	    		and fetch_seq = #{fetchSeq}
+	    			</if>
+	    			<if test="score != null" >
+	    		and score = #{score}
+	    			</if>
+	    			<if test="scores != null" >
+	    		and scores = #{scores}
+	    			</if>
+	    			<if test="fetchTime != null" >
+	    		and fetch_time = #{fetchTime}
+	    			</if>
+	    			<if test="submitTime != null" >
+	    		and submit_time = #{submitTime}
+	    			</if>
+	    			<if test="resubmitTime != null" >
+	    		and resubmit_time = #{resubmitTime}
+	    			</if>
+	    			<if test="fetchMarkerId != null" >
+	    		and fetch_marker_id = #{fetchMarkerId}
+	    			</if>
+	    			<if test="submitMarkerId != null" >
+	    		and submit_marker_id = #{submitMarkerId}
+	    			</if>
+	    			<if test="fetchFlag != null" >
+	    		and fetch_flag = #{fetchFlag}
+	    			</if>
+	    			<if test="doubt != null" >
+	    		and doubt = #{doubt}
+	    			</if>
+	    			<if test="doubtDone != null" >
+	    		and doubt_done = #{doubtDone}
+	    			</if>
+	    			<if test="isDel != null" >
+	    		and is_del = #{isDel}
+	    			</if>
+	    			<if test="isExamineeMark != null" >
+	    		and isExamineeMark = #{isExamineeMark}
+	    			</if>
+	    			<if test="remarkMarkerId != null" >
+	    		and remark_marker_id = #{remarkMarkerId}
+	    			</if>
+    		</where>
+    	</delete>
+    	<!-- 更新 -->
+    	<update id="updatePsScoringMark" parameterType="com.whty.edu.brain.ig.service.api.vo.PsScoringMarkVO">
+    		update ps_scoring_mark
+    		<set>
+	    			<if test="id != null" >
+	    		id = #{id},
+	    			</if>
+	    			<if test="markId != null" >
+	    		mark_id = #{markId},
+	    			</if>
+	    			<if test="examId != null" >
+	    		exam_id = #{examId},
+	    			</if>
+	    			<if test="batchId != null" >
+	    		batch_id = #{batchId},
+	    			</if>
+	    			<if test="subjectId != null" >
+	    		subject_id = #{subjectId},
+	    			</if>
+	    			<if test="sheetId != null" >
+	    		sheet_id = #{sheetId},
+	    			</if>
+	    			<if test="answerSheetItemId != null" >
+	    		answer_sheet_item_id = #{answerSheetItemId},
+	    			</if>
+	    			<if test="className != null" >
+	    		class_name = #{className},
+	    			</if>
+	    			<if test="studentName != null" >
+	    		student_name = #{studentName},
+	    			</if>
+	    			<if test="cryptCode != null" >
+	    		crypt_code = #{cryptCode},
+	    			</if>
+	    			<if test="zkzh != null" >
+	    		zkzh = #{zkzh},
+	    			</if>
+	    			<if test="fetchSeq != null" >
+	    		fetch_seq = #{fetchSeq},
+	    			</if>
+	    			<if test="score != null" >
+	    		score = #{score},
+	    			</if>
+	    			<if test="scores != null" >
+	    		scores = #{scores},
+	    			</if>
+	    			<if test="fetchTime != null" >
+	    		fetch_time = #{fetchTime},
+	    			</if>
+	    			<if test="submitTime != null" >
+	    		submit_time = #{submitTime},
+	    			</if>
+	    			<if test="resubmitTime != null" >
+	    		resubmit_time = #{resubmitTime},
+	    			</if>
+	    			<if test="fetchMarkerId != null" >
+	    		fetch_marker_id = #{fetchMarkerId},
+	    			</if>
+	    			<if test="submitMarkerId != null" >
+	    		submit_marker_id = #{submitMarkerId},
+	    			</if>
+	    			<if test="fetchFlag != null" >
+	    		fetch_flag = #{fetchFlag},
+	    			</if>
+	    			<if test="doubt != null" >
+	    		doubt = #{doubt},
+	    			</if>
+	    			<if test="doubtDone != null" >
+	    		doubt_done = #{doubtDone},
+	    			</if>
+	    			<if test="isDel != null" >
+	    		is_del = #{isDel},
+	    			</if>
+	    			<if test="isExamineeMark != null" >
+	    		isExamineeMark = #{isExamineeMark},
+	    			</if>
+	    			<if test="remarkMarkerId != null" >
+	    		remark_marker_id = #{remarkMarkerId},
+	    			</if>
+    		</set>
+    		<where>
+	    			<if test="id != null" >
+	    		and id = #{id}
+	    			</if>
+	    			<if test="markId != null" >
+	    		and mark_id = #{markId}
+	    			</if>
+	    			<if test="examId != null" >
+	    		and exam_id = #{examId}
+	    			</if>
+	    			<if test="batchId != null" >
+	    		and batch_id = #{batchId}
+	    			</if>
+	    			<if test="subjectId != null" >
+	    		and subject_id = #{subjectId}
+	    			</if>
+	    			<if test="sheetId != null" >
+	    		and sheet_id = #{sheetId}
+	    			</if>
+	    			<if test="answerSheetItemId != null" >
+	    		and answer_sheet_item_id = #{answerSheetItemId}
+	    			</if>
+	    			<if test="className != null" >
+	    		and class_name = #{className}
+	    			</if>
+	    			<if test="studentName != null" >
+	    		and student_name = #{studentName}
+	    			</if>
+	    			<if test="cryptCode != null" >
+	    		and crypt_code = #{cryptCode}
+	    			</if>
+	    			<if test="zkzh != null" >
+	    		and zkzh = #{zkzh}
+	    			</if>
+	    			<if test="fetchSeq != null" >
+	    		and fetch_seq = #{fetchSeq}
+	    			</if>
+	    			<if test="score != null" >
+	    		and score = #{score}
+	    			</if>
+	    			<if test="scores != null" >
+	    		and scores = #{scores}
+	    			</if>
+	    			<if test="fetchTime != null" >
+	    		and fetch_time = #{fetchTime}
+	    			</if>
+	    			<if test="submitTime != null" >
+	    		and submit_time = #{submitTime}
+	    			</if>
+	    			<if test="resubmitTime != null" >
+	    		and resubmit_time = #{resubmitTime}
+	    			</if>
+	    			<if test="fetchMarkerId != null" >
+	    		and fetch_marker_id = #{fetchMarkerId}
+	    			</if>
+	    			<if test="submitMarkerId != null" >
+	    		and submit_marker_id = #{submitMarkerId}
+	    			</if>
+	    			<if test="fetchFlag != null" >
+	    		and fetch_flag = #{fetchFlag}
+	    			</if>
+	    			<if test="doubt != null" >
+	    		and doubt = #{doubt}
+	    			</if>
+	    			<if test="doubtDone != null" >
+	    		and doubt_done = #{doubtDone}
+	    			</if>
+	    			<if test="isDel != null" >
+	    		and is_del = #{isDel}
+	    			</if>
+	    			<if test="isExamineeMark != null" >
+	    		and isExamineeMark = #{isExamineeMark}
+	    			</if>
+	    			<if test="remarkMarkerId != null" >
+	    		and remark_marker_id = #{remarkMarkerId}
+	    			</if>
+    		</where>
+    	</update>
+    	<!-- 查询列表 -->
+    	<select id="listPsScoringMark" parameterType="com.whty.edu.brain.ig.service.api.vo.PsScoringMarkVO" resultMap="PsScoringMarkMap">
+    		select * from ps_scoring_mark
+    		<where>
+	    			<if test="id != null" >
+	    		and id = #{id}
+	    			</if>
+	    			<if test="markId != null" >
+	    		and mark_id = #{markId}
+	    			</if>
+	    			<if test="examId != null" >
+	    		and exam_id = #{examId}
+	    			</if>
+	    			<if test="batchId != null" >
+	    		and batch_id = #{batchId}
+	    			</if>
+	    			<if test="subjectId != null" >
+	    		and subject_id = #{subjectId}
+	    			</if>
+	    			<if test="sheetId != null" >
+	    		and sheet_id = #{sheetId}
+	    			</if>
+	    			<if test="answerSheetItemId != null" >
+	    		and answer_sheet_item_id = #{answerSheetItemId}
+	    			</if>
+	    			<if test="className != null" >
+	    		and class_name = #{className}
+	    			</if>
+	    			<if test="studentName != null" >
+	    		and student_name = #{studentName}
+	    			</if>
+	    			<if test="cryptCode != null" >
+	    		and crypt_code = #{cryptCode}
+	    			</if>
+	    			<if test="zkzh != null" >
+	    		and zkzh = #{zkzh}
+	    			</if>
+	    			<if test="fetchSeq != null" >
+	    		and fetch_seq = #{fetchSeq}
+	    			</if>
+	    			<if test="score != null" >
+	    		and score = #{score}
+	    			</if>
+	    			<if test="scores != null" >
+	    		and scores = #{scores}
+	    			</if>
+	    			<if test="fetchTime != null" >
+	    		and fetch_time = #{fetchTime}
+	    			</if>
+	    			<if test="submitTime != null" >
+	    		and submit_time = #{submitTime}
+	    			</if>
+	    			<if test="resubmitTime != null" >
+	    		and resubmit_time = #{resubmitTime}
+	    			</if>
+	    			<if test="fetchMarkerId != null" >
+	    		and fetch_marker_id = #{fetchMarkerId}
+	    			</if>
+	    			<if test="submitMarkerId != null" >
+	    		and submit_marker_id = #{submitMarkerId}
+	    			</if>
+	    			<if test="fetchFlag != null" >
+	    		and fetch_flag = #{fetchFlag}
+	    			</if>
+	    			<if test="doubt != null" >
+	    		and doubt = #{doubt}
+	    			</if>
+	    			<if test="doubtDone != null" >
+	    		and doubt_done = #{doubtDone}
+	    			</if>
+	    			<if test="isDel != null" >
+	    		and is_del = #{isDel}
+	    			</if>
+	    			<if test="isExamineeMark != null" >
+	    		and isExamineeMark = #{isExamineeMark}
+	    			</if>
+	    			<if test="remarkMarkerId != null" >
+	    		and remark_marker_id = #{remarkMarkerId}
+	    			</if>
+    		</where>
+    	</select>
+</mapper>

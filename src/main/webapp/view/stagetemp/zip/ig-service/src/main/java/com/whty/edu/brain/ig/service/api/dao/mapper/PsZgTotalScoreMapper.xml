@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whty.edu.brain.ig.service.api.dao.PsZgTotalScoreDAO">
+		<resultMap type="com.whty.edu.brain.ig.service.api.vo.PsZgTotalScoreVO" id="PsZgTotalScoreMap">
+			<result column="id" property="id" jdbcType="BIGINT" />
+			<result column="exam_id" property="examId" jdbcType="VARCHAR" />
+			<result column="subject_id" property="subjectId" jdbcType="VARCHAR" />
+			<result column="crypt_code" property="cryptCode" jdbcType="VARCHAR" />
+			<result column="score" property="score" jdbcType="FLOAT" />
+		</resultMap>
+		<!-- 新增 -->
+    	<insert id="insertPsZgTotalScore" parameterType="com.whty.edu.brain.ig.service.api.vo.PsZgTotalScoreVO">
+    		insert into ps_zg_total_score(
+    			id,
+    			exam_id,
+    			subject_id,
+    			crypt_code,
+    			score
+    		)values(
+    			#{id},
+    			#{examId},
+    			#{subjectId},
+    			#{cryptCode},
+    			#{score}
+    		)
+    	</insert>
+    	<!-- 删除 -->
+    	<delete id="deletePsZgTotalScore" parameterType="com.whty.edu.brain.ig.service.api.vo.PsZgTotalScoreVO">
+    		delete from ps_zg_total_score
+    		<where>
+	    			<if test="id != null" >
+	    		and id = #{id}
+	    			</if>
+	    			<if test="examId != null" >
+	    		and exam_id = #{examId}
+	    			</if>
+	    			<if test="subjectId != null" >
+	    		and subject_id = #{subjectId}
+	    			</if>
+	    			<if test="cryptCode != null" >
+	    		and crypt_code = #{cryptCode}
+	    			</if>
+	    			<if test="score != null" >
+	    		and score = #{score}
+	    			</if>
+    		</where>
+    	</delete>
+    	<!-- 更新 -->
+    	<update id="updatePsZgTotalScore" parameterType="com.whty.edu.brain.ig.service.api.vo.PsZgTotalScoreVO">
+    		update ps_zg_total_score
+    		<set>
+	    			<if test="id != null" >
+	    		id = #{id},
+	    			</if>
+	    			<if test="examId != null" >
+	    		exam_id = #{examId},
+	    			</if>
+	    			<if test="subjectId != null" >
+	    		subject_id = #{subjectId},
+	    			</if>
+	    			<if test="cryptCode != null" >
+	    		crypt_code = #{cryptCode},
+	    			</if>
+	    			<if test="score != null" >
+	    		score = #{score},
+	    			</if>
+    		</set>
+    		<where>
+	    			<if test="id != null" >
+	    		and id = #{id}
+	    			</if>
+	    			<if test="examId != null" >
+	    		and exam_id = #{examId}
+	    			</if>
+	    			<if test="subjectId != null" >
+	    		and subject_id = #{subjectId}
+	    			</if>
+	    			<if test="cryptCode != null" >
+	    		and crypt_code = #{cryptCode}
+	    			</if>
+	    			<if test="score != null" >
+	    		and score = #{score}
+	    			</if>
+    		</where>
+    	</update>
+    	<!-- 查询列表 -->
+    	<select id="listPsZgTotalScore" parameterType="com.whty.edu.brain.ig.service.api.vo.PsZgTotalScoreVO" resultMap="PsZgTotalScoreMap">
+    		select * from ps_zg_total_score
+    		<where>
+	    			<if test="id != null" >
+	    		and id = #{id}
+	    			</if>
+	    			<if test="examId != null" >
+	    		and exam_id = #{examId}
+	    			</if>
+	    			<if test="subjectId != null" >
+	    		and subject_id = #{subjectId}
+	    			</if>
+	    			<if test="cryptCode != null" >
+	    		and crypt_code = #{cryptCode}
+	    			</if>
+	    			<if test="score != null" >
+	    		and score = #{score}
+	    			</if>
+    		</where>
+    	</select>
+</mapper>

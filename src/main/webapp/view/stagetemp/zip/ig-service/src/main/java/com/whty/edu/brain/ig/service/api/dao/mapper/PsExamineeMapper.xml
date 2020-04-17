@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whty.edu.brain.ig.service.api.dao.PsExamineeDAO">
+		<resultMap type="com.whty.edu.brain.ig.service.api.vo.PsExamineeVO" id="PsExamineeMap">
+			<result column="id" property="id" jdbcType="BIGINT" />
+			<result column="examinee_id" property="examineeId" jdbcType="VARCHAR" />
+			<result column="exam_id" property="examId" jdbcType="VARCHAR" />
+			<result column="person_id" property="personId" jdbcType="VARCHAR" />
+			<result column="school_id" property="schoolId" jdbcType="VARCHAR" />
+			<result column="school_name" property="schoolName" jdbcType="VARCHAR" />
+			<result column="clazz_id" property="clazzId" jdbcType="VARCHAR" />
+			<result column="clazz_name" property="clazzName" jdbcType="VARCHAR" />
+			<result column="name" property="name" jdbcType="VARCHAR" />
+			<result column="student_no" property="studentNo" jdbcType="VARCHAR" />
+			<result column="attended" property="attended" jdbcType="SMALLINT" />
+			<result column="exam_number" property="examNumber" jdbcType="VARCHAR" />
+			<result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+			<result column="last_operator_id" property="lastOperatorId" jdbcType="VARCHAR" />
+			<result column="last_operator_name" property="lastOperatorName" jdbcType="VARCHAR" />
+			<result column="is_del" property="isDel" jdbcType="TINYINT" />
+		</resultMap>
+		<!-- 新增 -->
+    	<insert id="insertPsExaminee" parameterType="com.whty.edu.brain.ig.service.api.vo.PsExamineeVO">
+    		insert into ps_examinee(
+    			id,
+    			examinee_id,
+    			exam_id,
+    			person_id,
+    			school_id,
+    			school_name,
+    			clazz_id,
+    			clazz_name,
+    			name,
+    			student_no,
+    			attended,
+    			exam_number,
+    			last_update_time,
+    			last_operator_id,
+    			last_operator_name,
+    			is_del
+    		)values(
+    			#{id},
+    			#{examineeId},
+    			#{examId},
+    			#{personId},
+    			#{schoolId},
+    			#{schoolName},
+    			#{clazzId},
+    			#{clazzName},
+    			#{name},
+    			#{studentNo},
+    			#{attended},
+    			#{examNumber},
+    			#{lastUpdateTime},
+    			#{lastOperatorId},
+    			#{lastOperatorName},
+    			#{isDel}
+    		)
+    	</insert>
+    	<!-- 删除 -->
+    	<delete id="deletePsExaminee" parameterType="com.whty.edu.brain.ig.service.api.vo.PsExamineeVO">
+    		delete from ps_examinee
+    		<where>
+	    			<if test="id != null" >
+	    		and id = #{id}
+	    			</if>
+	    			<if test="examineeId != null" >
+	    		and examinee_id = #{examineeId}
+	    			</if>
+	    			<if test="examId != null" >
+	    		and exam_id = #{examId}
+	    			</if>
+	    			<if test="personId != null" >
+	    		and person_id = #{personId}
+	    			</if>
+	    			<if test="schoolId != null" >
+	    		and school_id = #{schoolId}
+	    			</if>
+	    			<if test="schoolName != null" >
+	    		and school_name = #{schoolName}
+	    			</if>
+	    			<if test="clazzId != null" >
+	    		and clazz_id = #{clazzId}
+	    			</if>
+	    			<if test="clazzName != null" >
+	    		and clazz_name = #{clazzName}
+	    			</if>
+	    			<if test="name != null" >
+	    		and name = #{name}
+	    			</if>
+	    			<if test="studentNo != null" >
+	    		and student_no = #{studentNo}
+	    			</if>
+	    			<if test="attended != null" >
+	    		and attended = #{attended}
+	    			</if>
+	    			<if test="examNumber != null" >
+	    		and exam_number = #{examNumber}
+	    			</if>
+	    			<if test="lastUpdateTime != null" >
+	    		and last_update_time = #{lastUpdateTime}
+	    			</if>
+	    			<if test="lastOperatorId != null" >
+	    		and last_operator_id = #{lastOperatorId}
+	    			</if>
+	    			<if test="lastOperatorName != null" >
+	    		and last_operator_name = #{lastOperatorName}
+	    			</if>
+	    			<if test="isDel != null" >
+	    		and is_del = #{isDel}
+	    			</if>
+    		</where>
+    	</delete>
+    	<!-- 更新 -->
+    	<update id="updatePsExaminee" parameterType="com.whty.edu.brain.ig.service.api.vo.PsExamineeVO">
+    		update ps_examinee
+    		<set>
+	    			<if test="id != null" >
+	    		id = #{id},
+	    			</if>
+	    			<if test="examineeId != null" >
+	    		examinee_id = #{examineeId},
+	    			</if>
+	    			<if test="examId != null" >
+	    		exam_id = #{examId},
+	    			</if>
+	    			<if test="personId != null" >
+	    		person_id = #{personId},
+	    			</if>
+	    			<if test="schoolId != null" >
+	    		school_id = #{schoolId},
+	    			</if>
+	    			<if test="schoolName != null" >
+	    		school_name = #{schoolName},
+	    			</if>
+	    			<if test="clazzId != null" >
+	    		clazz_id = #{clazzId},
+	    			</if>
+	    			<if test="clazzName != null" >
+	    		clazz_name = #{clazzName},
+	    			</if>
+	    			<if test="name != null" >
+	    		name = #{name},
+	    			</if>
+	    			<if test="studentNo != null" >
+	    		student_no = #{studentNo},
+	    			</if>
+	    			<if test="attended != null" >
+	    		attended = #{attended},
+	    			</if>
+	    			<if test="examNumber != null" >
+	    		exam_number = #{examNumber},
+	    			</if>
+	    			<if test="lastUpdateTime != null" >
+	    		last_update_time = #{lastUpdateTime},
+	    			</if>
+	    			<if test="lastOperatorId != null" >
+	    		last_operator_id = #{lastOperatorId},
+	    			</if>
+	    			<if test="lastOperatorName != null" >
+	    		last_operator_name = #{lastOperatorName},
+	    			</if>
+	    			<if test="isDel != null" >
+	    		is_del = #{isDel},
+	    			</if>
+    		</set>
+    		<where>
+	    			<if test="id != null" >
+	    		and id = #{id}
+	    			</if>
+	    			<if test="examineeId != null" >
+	    		and examinee_id = #{examineeId}
+	    			</if>
+	    			<if test="examId != null" >
+	    		and exam_id = #{examId}
+	    			</if>
+	    			<if test="personId != null" >
+	    		and person_id = #{personId}
+	    			</if>
+	    			<if test="schoolId != null" >
+	    		and school_id = #{schoolId}
+	    			</if>
+	    			<if test="schoolName != null" >
+	    		and school_name = #{schoolName}
+	    			</if>
+	    			<if test="clazzId != null" >
+	    		and clazz_id = #{clazzId}
+	    			</if>
+	    			<if test="clazzName != null" >
+	    		and clazz_name = #{clazzName}
+	    			</if>
+	    			<if test="name != null" >
+	    		and name = #{name}
+	    			</if>
+	    			<if test="studentNo != null" >
+	    		and student_no = #{studentNo}
+	    			</if>
+	    			<if test="attended != null" >
+	    		and attended = #{attended}
+	    			</if>
+	    			<if test="examNumber != null" >
+	    		and exam_number = #{examNumber}
+	    			</if>
+	    			<if test="lastUpdateTime != null" >
+	    		and last_update_time = #{lastUpdateTime}
+	    			</if>
+	    			<if test="lastOperatorId != null" >
+	    		and last_operator_id = #{lastOperatorId}
+	    			</if>
+	    			<if test="lastOperatorName != null" >
+	    		and last_operator_name = #{lastOperatorName}
+	    			</if>
+	    			<if test="isDel != null" >
+	    		and is_del = #{isDel}
+	    			</if>
+    		</where>
+    	</update>
+    	<!-- 查询列表 -->
+    	<select id="listPsExaminee" parameterType="com.whty.edu.brain.ig.service.api.vo.PsExamineeVO" resultMap="PsExamineeMap">
+    		select * from ps_examinee
+    		<where>
+	    			<if test="id != null" >
+	    		and id = #{id}
+	    			</if>
+	    			<if test="examineeId != null" >
+	    		and examinee_id = #{examineeId}
+	    			</if>
+	    			<if test="examId != null" >
+	    		and exam_id = #{examId}
+	    			</if>
+	    			<if test="personId != null" >
+	    		and person_id = #{personId}
+	    			</if>
+	    			<if test="schoolId != null" >
+	    		and school_id = #{schoolId}
+	    			</if>
+	    			<if test="schoolName != null" >
+	    		and school_name = #{schoolName}
+	    			</if>
+	    			<if test="clazzId != null" >
+	    		and clazz_id = #{clazzId}
+	    			</if>
+	    			<if test="clazzName != null" >
+	    		and clazz_name = #{clazzName}
+	    			</if>
+	    			<if test="name != null" >
+	    		and name = #{name}
+	    			</if>
+	    			<if test="studentNo != null" >
+	    		and student_no = #{studentNo}
+	    			</if>
+	    			<if test="attended != null" >
+	    		and attended = #{attended}
+	    			</if>
+	    			<if test="examNumber != null" >
+	    		and exam_number = #{examNumber}
+	    			</if>
+	    			<if test="lastUpdateTime != null" >
+	    		and last_update_time = #{lastUpdateTime}
+	    			</if>
+	    			<if test="lastOperatorId != null" >
+	    		and last_operator_id = #{lastOperatorId}
+	    			</if>
+	    			<if test="lastOperatorName != null" >
+	    		and last_operator_name = #{lastOperatorName}
+	    			</if>
+	    			<if test="isDel != null" >
+	    		and is_del = #{isDel}
+	    			</if>
+    		</where>
+    	</select>
+</mapper>

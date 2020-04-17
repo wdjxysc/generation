@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whty.edu.brain.ig.service.api.dao.PsOnlineSubmitDAO">
+		<resultMap type="com.whty.edu.brain.ig.service.api.vo.PsOnlineSubmitVO" id="PsOnlineSubmitMap">
+			<result column="id" property="id" jdbcType="BIGINT" />
+			<result column="submit_id" property="submitId" jdbcType="VARCHAR" />
+			<result column="exam_id" property="examId" jdbcType="VARCHAR" />
+			<result column="subject_id" property="subjectId" jdbcType="VARCHAR" />
+			<result column="submit_content" property="submitContent" jdbcType="VARCHAR" />
+			<result column="validate_message" property="validateMessage" jdbcType="VARCHAR" />
+			<result column="person_id" property="personId" jdbcType="VARCHAR" />
+			<result column="is_del" property="isDel" jdbcType="TINYINT" />
+			<result column="receive_time" property="receiveTime" jdbcType="BIGINT" />
+			<result column="submit_source" property="submitSource" jdbcType="VARCHAR" />
+		</resultMap>
+		<!-- 新增 -->
+    	<insert id="insertPsOnlineSubmit" parameterType="com.whty.edu.brain.ig.service.api.vo.PsOnlineSubmitVO">
+    		insert into ps_online_submit(
+    			id,
+    			submit_id,
+    			exam_id,
+    			subject_id,
+    			submit_content,
+    			validate_message,
+    			person_id,
+    			is_del,
+    			receive_time,
+    			submit_source
+    		)values(
+    			#{id},
+    			#{submitId},
+    			#{examId},
+    			#{subjectId},
+    			#{submitContent},
+    			#{validateMessage},
+    			#{personId},
+    			#{isDel},
+    			#{receiveTime},
+    			#{submitSource}
+    		)
+    	</insert>
+    	<!-- 删除 -->
+    	<delete id="deletePsOnlineSubmit" parameterType="com.whty.edu.brain.ig.service.api.vo.PsOnlineSubmitVO">
+    		delete from ps_online_submit
+    		<where>
+	    			<if test="id != null" >
+	    		and id = #{id}
+	    			</if>
+	    			<if test="submitId != null" >
+	    		and submit_id = #{submitId}
+	    			</if>
+	    			<if test="examId != null" >
+	    		and exam_id = #{examId}
+	    			</if>
+	    			<if test="subjectId != null" >
+	    		and subject_id = #{subjectId}
+	    			</if>
+	    			<if test="submitContent != null" >
+	    		and submit_content = #{submitContent}
+	    			</if>
+	    			<if test="validateMessage != null" >
+	    		and validate_message = #{validateMessage}
+	    			</if>
+	    			<if test="personId != null" >
+	    		and person_id = #{personId}
+	    			</if>
+	    			<if test="isDel != null" >
+	    		and is_del = #{isDel}
+	    			</if>
+	    			<if test="receiveTime != null" >
+	    		and receive_time = #{receiveTime}
+	    			</if>
+	    			<if test="submitSource != null" >
+	    		and submit_source = #{submitSource}
+	    			</if>
+    		</where>
+    	</delete>
+    	<!-- 更新 -->
+    	<update id="updatePsOnlineSubmit" parameterType="com.whty.edu.brain.ig.service.api.vo.PsOnlineSubmitVO">
+    		update ps_online_submit
+    		<set>
+	    			<if test="id != null" >
+	    		id = #{id},
+	    			</if>
+	    			<if test="submitId != null" >
+	    		submit_id = #{submitId},
+	    			</if>
+	    			<if test="examId != null" >
+	    		exam_id = #{examId},
+	    			</if>
+	    			<if test="subjectId != null" >
+	    		subject_id = #{subjectId},
+	    			</if>
+	    			<if test="submitContent != null" >
+	    		submit_content = #{submitContent},
+	    			</if>
+	    			<if test="validateMessage != null" >
+	    		validate_message = #{validateMessage},
+	    			</if>
+	    			<if test="personId != null" >
+	    		person_id = #{personId},
+	    			</if>
+	    			<if test="isDel != null" >
+	    		is_del = #{isDel},
+	    			</if>
+	    			<if test="receiveTime != null" >
+	    		receive_time = #{receiveTime},
+	    			</if>
+	    			<if test="submitSource != null" >
+	    		submit_source = #{submitSource},
+	    			</if>
+    		</set>
+    		<where>
+	    			<if test="id != null" >
+	    		and id = #{id}
+	    			</if>
+	    			<if test="submitId != null" >
+	    		and submit_id = #{submitId}
+	    			</if>
+	    			<if test="examId != null" >
+	    		and exam_id = #{examId}
+	    			</if>
+	    			<if test="subjectId != null" >
+	    		and subject_id = #{subjectId}
+	    			</if>
+	    			<if test="submitContent != null" >
+	    		and submit_content = #{submitContent}
+	    			</if>
+	    			<if test="validateMessage != null" >
+	    		and validate_message = #{validateMessage}
+	    			</if>
+	    			<if test="personId != null" >
+	    		and person_id = #{personId}
+	    			</if>
+	    			<if test="isDel != null" >
+	    		and is_del = #{isDel}
+	    			</if>
+	    			<if test="receiveTime != null" >
+	    		and receive_time = #{receiveTime}
+	    			</if>
+	    			<if test="submitSource != null" >
+	    		and submit_source = #{submitSource}
+	    			</if>
+    		</where>
+    	</update>
+    	<!-- 查询列表 -->
+    	<select id="listPsOnlineSubmit" parameterType="com.whty.edu.brain.ig.service.api.vo.PsOnlineSubmitVO" resultMap="PsOnlineSubmitMap">
+    		select * from ps_online_submit
+    		<where>
+	    			<if test="id != null" >
+	    		and id = #{id}
+	    			</if>
+	    			<if test="submitId != null" >
+	    		and submit_id = #{submitId}
+	    			</if>
+	    			<if test="examId != null" >
+	    		and exam_id = #{examId}
+	    			</if>
+	    			<if test="subjectId != null" >
+	    		and subject_id = #{subjectId}
+	    			</if>
+	    			<if test="submitContent != null" >
+	    		and submit_content = #{submitContent}
+	    			</if>
+	    			<if test="validateMessage != null" >
+	    		and validate_message = #{validateMessage}
+	    			</if>
+	    			<if test="personId != null" >
+	    		and person_id = #{personId}
+	    			</if>
+	    			<if test="isDel != null" >
+	    		and is_del = #{isDel}
+	    			</if>
+	    			<if test="receiveTime != null" >
+	    		and receive_time = #{receiveTime}
+	    			</if>
+	    			<if test="submitSource != null" >
+	    		and submit_source = #{submitSource}
+	    			</if>
+    		</where>
+    	</select>
+</mapper>

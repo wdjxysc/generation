@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whty.edu.brain.ig.service.api.dao.PsExamineeSheetSlicesDAO">
+		<resultMap type="com.whty.edu.brain.ig.service.api.vo.PsExamineeSheetSlicesVO" id="PsExamineeSheetSlicesMap">
+			<result column="id" property="id" jdbcType="BIGINT" />
+			<result column="sheet_id" property="sheetId" jdbcType="VARCHAR" />
+			<result column="exam_id" property="examId" jdbcType="VARCHAR" />
+			<result column="submit_content" property="submitContent" jdbcType="VARCHAR" />
+			<result column="submit_time" property="submitTime" jdbcType="TIMESTAMP" />
+			<result column="img_url" property="imgUrl" jdbcType="VARCHAR" />
+			<result column="roate" property="roate" jdbcType="SMALLINT" />
+			<result column="answer_sheet_item_id" property="answerSheetItemId" jdbcType="VARCHAR" />
+			<result column="seq" property="seq" jdbcType="VARCHAR" />
+			<result column="is_del" property="isDel" jdbcType="TINYINT" />
+			<result column="isComplex" property="isComplex" jdbcType="TINYINT" />
+			<result column="textImgBase64" property="textImgBase64" jdbcType="VARCHAR" />
+			<result column="coordinate" property="coordinate" jdbcType="VARCHAR" />
+		</resultMap>
+		<!-- 新增 -->
+    	<insert id="insertPsExamineeSheetSlices" parameterType="com.whty.edu.brain.ig.service.api.vo.PsExamineeSheetSlicesVO">
+    		insert into ps_examinee_sheet_slices(
+    			id,
+    			sheet_id,
+    			exam_id,
+    			submit_content,
+    			submit_time,
+    			img_url,
+    			roate,
+    			answer_sheet_item_id,
+    			seq,
+    			is_del,
+    			isComplex,
+    			textImgBase64,
+    			coordinate
+    		)values(
+    			#{id},
+    			#{sheetId},
+    			#{examId},
+    			#{submitContent},
+    			#{submitTime},
+    			#{imgUrl},
+    			#{roate},
+    			#{answerSheetItemId},
+    			#{seq},
+    			#{isDel},
+    			#{isComplex},
+    			#{textImgBase64},
+    			#{coordinate}
+    		)
+    	</insert>
+    	<!-- 删除 -->
+    	<delete id="deletePsExamineeSheetSlices" parameterType="com.whty.edu.brain.ig.service.api.vo.PsExamineeSheetSlicesVO">
+    		delete from ps_examinee_sheet_slices
+    		<where>
+	    			<if test="id != null" >
+	    		and id = #{id}
+	    			</if>
+	    			<if test="sheetId != null" >
+	    		and sheet_id = #{sheetId}
+	    			</if>
+	    			<if test="examId != null" >
+	    		and exam_id = #{examId}
+	    			</if>
+	    			<if test="submitContent != null" >
+	    		and submit_content = #{submitContent}
+	    			</if>
+	    			<if test="submitTime != null" >
+	    		and submit_time = #{submitTime}
+	    			</if>
+	    			<if test="imgUrl != null" >
+	    		and img_url = #{imgUrl}
+	    			</if>
+	    			<if test="roate != null" >
+	    		and roate = #{roate}
+	    			</if>
+	    			<if test="answerSheetItemId != null" >
+	    		and answer_sheet_item_id = #{answerSheetItemId}
+	    			</if>
+	    			<if test="seq != null" >
+	    		and seq = #{seq}
+	    			</if>
+	    			<if test="isDel != null" >
+	    		and is_del = #{isDel}
+	    			</if>
+	    			<if test="isComplex != null" >
+	    		and isComplex = #{isComplex}
+	    			</if>
+	    			<if test="textImgBase64 != null" >
+	    		and textImgBase64 = #{textImgBase64}
+	    			</if>
+	    			<if test="coordinate != null" >
+	    		and coordinate = #{coordinate}
+	    			</if>
+    		</where>
+    	</delete>
+    	<!-- 更新 -->
+    	<update id="updatePsExamineeSheetSlices" parameterType="com.whty.edu.brain.ig.service.api.vo.PsExamineeSheetSlicesVO">
+    		update ps_examinee_sheet_slices
+    		<set>
+	    			<if test="id != null" >
+	    		id = #{id},
+	    			</if>
+	    			<if test="sheetId != null" >
+	    		sheet_id = #{sheetId},
+	    			</if>
+	    			<if test="examId != null" >
+	    		exam_id = #{examId},
+	    			</if>
+	    			<if test="submitContent != null" >
+	    		submit_content = #{submitContent},
+	    			</if>
+	    			<if test="submitTime != null" >
+	    		submit_time = #{submitTime},
+	    			</if>
+	    			<if test="imgUrl != null" >
+	    		img_url = #{imgUrl},
+	    			</if>
+	    			<if test="roate != null" >
+	    		roate = #{roate},
+	    			</if>
+	    			<if test="answerSheetItemId != null" >
+	    		answer_sheet_item_id = #{answerSheetItemId},
+	    			</if>
+	    			<if test="seq != null" >
+	    		seq = #{seq},
+	    			</if>
+	    			<if test="isDel != null" >
+	    		is_del = #{isDel},
+	    			</if>
+	    			<if test="isComplex != null" >
+	    		isComplex = #{isComplex},
+	    			</if>
+	    			<if test="textImgBase64 != null" >
+	    		textImgBase64 = #{textImgBase64},
+	    			</if>
+	    			<if test="coordinate != null" >
+	    		coordinate = #{coordinate},
+	    			</if>
+    		</set>
+    		<where>
+	    			<if test="id != null" >
+	    		and id = #{id}
+	    			</if>
+	    			<if test="sheetId != null" >
+	    		and sheet_id = #{sheetId}
+	    			</if>
+	    			<if test="examId != null" >
+	    		and exam_id = #{examId}
+	    			</if>
+	    			<if test="submitContent != null" >
+	    		and submit_content = #{submitContent}
+	    			</if>
+	    			<if test="submitTime != null" >
+	    		and submit_time = #{submitTime}
+	    			</if>
+	    			<if test="imgUrl != null" >
+	    		and img_url = #{imgUrl}
+	    			</if>
+	    			<if test="roate != null" >
+	    		and roate = #{roate}
+	    			</if>
+	    			<if test="answerSheetItemId != null" >
+	    		and answer_sheet_item_id = #{answerSheetItemId}
+	    			</if>
+	    			<if test="seq != null" >
+	    		and seq = #{seq}
+	    			</if>
+	    			<if test="isDel != null" >
+	    		and is_del = #{isDel}
+	    			</if>
+	    			<if test="isComplex != null" >
+	    		and isComplex = #{isComplex}
+	    			</if>
+	    			<if test="textImgBase64 != null" >
+	    		and textImgBase64 = #{textImgBase64}
+	    			</if>
+	    			<if test="coordinate != null" >
+	    		and coordinate = #{coordinate}
+	    			</if>
+    		</where>
+    	</update>
+    	<!-- 查询列表 -->
+    	<select id="listPsExamineeSheetSlices" parameterType="com.whty.edu.brain.ig.service.api.vo.PsExamineeSheetSlicesVO" resultMap="PsExamineeSheetSlicesMap">
+    		select * from ps_examinee_sheet_slices
+    		<where>
+	    			<if test="id != null" >
+	    		and id = #{id}
+	    			</if>
+	    			<if test="sheetId != null" >
+	    		and sheet_id = #{sheetId}
+	    			</if>
+	    			<if test="examId != null" >
+	    		and exam_id = #{examId}
+	    			</if>
+	    			<if test="submitContent != null" >
+	    		and submit_content = #{submitContent}
+	    			</if>
+	    			<if test="submitTime != null" >
+	    		and submit_time = #{submitTime}
+	    			</if>
+	    			<if test="imgUrl != null" >
+	    		and img_url = #{imgUrl}
+	    			</if>
+	    			<if test="roate != null" >
+	    		and roate = #{roate}
+	    			</if>
+	    			<if test="answerSheetItemId != null" >
+	    		and answer_sheet_item_id = #{answerSheetItemId}
+	    			</if>
+	    			<if test="seq != null" >
+	    		and seq = #{seq}
+	    			</if>
+	    			<if test="isDel != null" >
+	    		and is_del = #{isDel}
+	    			</if>
+	    			<if test="isComplex != null" >
+	    		and isComplex = #{isComplex}
+	    			</if>
+	    			<if test="textImgBase64 != null" >
+	    		and textImgBase64 = #{textImgBase64}
+	    			</if>
+	    			<if test="coordinate != null" >
+	    		and coordinate = #{coordinate}
+	    			</if>
+    		</where>
+    	</select>
+</mapper>

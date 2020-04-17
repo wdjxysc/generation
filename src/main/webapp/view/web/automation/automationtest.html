@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>自动化测试</title>
+  <link rel="stylesheet" href="http://127.0.0.1:9002/view/statics/layui/css/layui.css">
+  <script src="http://127.0.0.1:9002/view/statics/layui/lay/modules/form.js"></script>
+  <script src="http://127.0.0.1:9002/view/statics/layui/lay/modules/element.js"></script>
+  <script src="http://127.0.0.1:9002/view/statics/js/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+<div class="layui-collapse">
+</div>
+<script>
+layui.use('element', function(){
+	var element = layui.element;
+	var modules = [];
+	$.ajax({
+    	url: '/automationTestModule/list.do',
+    	type: 'get',
+    	data: null,
+    	dataType: "json",
+    	async:false,
+    	success: function (data) {
+        	if (data.code == "200") {
+        		modules = data.data;
+        		console.dir(data);
+        		for(var module in modules){
+        			var html = '<div class="layui-colla-item">';
+        			html += '<h2 class="layui-colla-title">' + module + '<button type="button" class="layui-btn layui-btn-xs layui-btn-warm" style="float: right;">添加接口</button></h2>';
+        			html += '<div class="layui-colla-content layui-show">';
+        			var apis = modules[module];
+        			for(var i = 0;i < apis.length;i++){
+        				var api = apis[i];
+        				html += '<blockquote class="layui-elem-quote layui-quote-nm">' + api["apiName"] + '<button type="button" class="layui-btn layui-btn-xs layui-btn-warm">测试</button></blockquote>';
+        			}
+        			html += '</div>';
+        			html += '</div>';
+        			$(".layui-collapse").append(html);
+        		}
+        		element.render();
+        	} else{
+        		layer.msg('连接失败'); 
+        	}
+    	},
+    	error: function () {
+    		layer.msg('连接失败'); 
+    	}
+	});
+})
+	//加载模板及模板下api
+</script>
+</body>
+</html>

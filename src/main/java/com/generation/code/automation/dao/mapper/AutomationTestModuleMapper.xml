@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.generation.code.automation.dao.AutomationTestModuleDAO">
+		<resultMap type="com.generation.code.automation.vo.AutomationTestModuleVO" id="AutomationTestModuleMap">
+					<result column="module_name" property="moduleName" jdbcType="VARCHAR" />
+					<result column="module_code" property="moduleCode" jdbcType="VARCHAR" />
+		</resultMap>
+		<!-- 新增 -->
+    	<insert id="insertAutomationTestModule" parameterType="com.generation.code.automation.vo.AutomationTestModuleVO">
+    		insert into automation_test_module(
+    					module_name,
+    					module_code
+    		)values(
+    					#{moduleName},
+    					#{moduleCode}
+    		)
+    	</insert>
+    	<!-- 删除 -->
+    	<delete id="deleteAutomationTestModule" parameterType="com.generation.code.automation.vo.AutomationTestModuleVO">
+    		delete from automation_test_module
+    		<where>
+	    			<if test="moduleName != null" >
+	    				and module_name = #{moduleName},
+	    			</if>
+	    			<if test="moduleCode != null" >
+	    				and module_code = #{moduleCode},
+	    			</if>
+    		</where>
+    	</delete>
+    	<!-- 更新 -->
+    	<update id="updateAutomationTestModule" parameterType="com.generation.code.automation.vo.AutomationTestModuleVO">
+    		update automation_test_module
+    		<set>
+	    			<if test="moduleName != null" >
+	    				module_name = #{moduleName},
+	    			</if>
+	    			<if test="moduleCode != null" >
+	    				module_code = #{moduleCode},
+	    			</if>
+    		</set>
+    		<where>
+	    			<if test="moduleName != null" >
+	    				and module_name = #{moduleName},
+	    			</if>
+	    			<if test="moduleCode != null" >
+	    				and module_code = #{moduleCode},
+	    			</if>
+    		</where>
+    	</update>
+    	<!-- 查询列表 -->
+    	<select id="listAutomationTestModule" parameterType="com.generation.code.automation.vo.AutomationTestModuleVO" resultMap="AutomationTestModuleMap">
+    		select * from automation_test_module
+    		<where>
+	    			<if test="moduleName != null" >
+	    				and module_name = #{moduleName},
+	    			</if>
+	    			<if test="moduleCode != null" >
+	    				and module_code = #{moduleCode},
+	    			</if>
+    		</where>
+    	</select>
+</mapper>

@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whty.edu.brain.ig.service.api.dao.PsSubjectScoreDAO">
+		<resultMap type="com.whty.edu.brain.ig.service.api.vo.PsSubjectScoreVO" id="PsSubjectScoreMap">
+			<result column="id" property="id" jdbcType="BIGINT" />
+			<result column="exam_id" property="examId" jdbcType="VARCHAR" />
+			<result column="subject_id" property="subjectId" jdbcType="VARCHAR" />
+			<result column="subject_name" property="subjectName" jdbcType="VARCHAR" />
+			<result column="sheet_id" property="sheetId" jdbcType="VARCHAR" />
+			<result column="crypt_code" property="cryptCode" jdbcType="VARCHAR" />
+			<result column="zkzh" property="zkzh" jdbcType="VARCHAR" />
+			<result column="total_score" property="totalScore" jdbcType="FLOAT" />
+			<result column="kg_score_json" property="kgScoreJson" jdbcType="VARCHAR" />
+			<result column="zg_score_json" property="zgScoreJson" jdbcType="VARCHAR" />
+			<result column="kg_errored" property="kgErrored" jdbcType="TINYINT" />
+			<result column="kg_error" property="kgError" jdbcType="VARCHAR" />
+			<result column="zg_errored" property="zgErrored" jdbcType="TINYINT" />
+			<result column="zg_error" property="zgError" jdbcType="VARCHAR" />
+			<result column="img_array_str" property="imgArrayStr" jdbcType="VARCHAR" />
+		</resultMap>
+		<!-- 新增 -->
+    	<insert id="insertPsSubjectScore" parameterType="com.whty.edu.brain.ig.service.api.vo.PsSubjectScoreVO">
+    		insert into ps_subject_score(
+    			id,
+    			exam_id,
+    			subject_id,
+    			subject_name,
+    			sheet_id,
+    			crypt_code,
+    			zkzh,
+    			total_score,
+    			kg_score_json,
+    			zg_score_json,
+    			kg_errored,
+    			kg_error,
+    			zg_errored,
+    			zg_error,
+    			img_array_str
+    		)values(
+    			#{id},
+    			#{examId},
+    			#{subjectId},
+    			#{subjectName},
+    			#{sheetId},
+    			#{cryptCode},
+    			#{zkzh},
+    			#{totalScore},
+    			#{kgScoreJson},
+    			#{zgScoreJson},
+    			#{kgErrored},
+    			#{kgError},
+    			#{zgErrored},
+    			#{zgError},
+    			#{imgArrayStr}
+    		)
+    	</insert>
+    	<!-- 删除 -->
+    	<delete id="deletePsSubjectScore" parameterType="com.whty.edu.brain.ig.service.api.vo.PsSubjectScoreVO">
+    		delete from ps_subject_score
+    		<where>
+	    			<if test="id != null" >
+	    		and id = #{id}
+	    			</if>
+	    			<if test="examId != null" >
+	    		and exam_id = #{examId}
+	    			</if>
+	    			<if test="subjectId != null" >
+	    		and subject_id = #{subjectId}
+	    			</if>
+	    			<if test="subjectName != null" >
+	    		and subject_name = #{subjectName}
+	    			</if>
+	    			<if test="sheetId != null" >
+	    		and sheet_id = #{sheetId}
+	    			</if>
+	    			<if test="cryptCode != null" >
+	    		and crypt_code = #{cryptCode}
+	    			</if>
+	    			<if test="zkzh != null" >
+	    		and zkzh = #{zkzh}
+	    			</if>
+	    			<if test="totalScore != null" >
+	    		and total_score = #{totalScore}
+	    			</if>
+	    			<if test="kgScoreJson != null" >
+	    		and kg_score_json = #{kgScoreJson}
+	    			</if>
+	    			<if test="zgScoreJson != null" >
+	    		and zg_score_json = #{zgScoreJson}
+	    			</if>
+	    			<if test="kgErrored != null" >
+	    		and kg_errored = #{kgErrored}
+	    			</if>
+	    			<if test="kgError != null" >
+	    		and kg_error = #{kgError}
+	    			</if>
+	    			<if test="zgErrored != null" >
+	    		and zg_errored = #{zgErrored}
+	    			</if>
+	    			<if test="zgError != null" >
+	    		and zg_error = #{zgError}
+	    			</if>
+	    			<if test="imgArrayStr != null" >
+	    		and img_array_str = #{imgArrayStr}
+	    			</if>
+    		</where>
+    	</delete>
+    	<!-- 更新 -->
+    	<update id="updatePsSubjectScore" parameterType="com.whty.edu.brain.ig.service.api.vo.PsSubjectScoreVO">
+    		update ps_subject_score
+    		<set>
+	    			<if test="id != null" >
+	    		id = #{id},
+	    			</if>
+	    			<if test="examId != null" >
+	    		exam_id = #{examId},
+	    			</if>
+	    			<if test="subjectId != null" >
+	    		subject_id = #{subjectId},
+	    			</if>
+	    			<if test="subjectName != null" >
+	    		subject_name = #{subjectName},
+	    			</if>
+	    			<if test="sheetId != null" >
+	    		sheet_id = #{sheetId},
+	    			</if>
+	    			<if test="cryptCode != null" >
+	    		crypt_code = #{cryptCode},
+	    			</if>
+	    			<if test="zkzh != null" >
+	    		zkzh = #{zkzh},
+	    			</if>
+	    			<if test="totalScore != null" >
+	    		total_score = #{totalScore},
+	    			</if>
+	    			<if test="kgScoreJson != null" >
+	    		kg_score_json = #{kgScoreJson},
+	    			</if>
+	    			<if test="zgScoreJson != null" >
+	    		zg_score_json = #{zgScoreJson},
+	    			</if>
+	    			<if test="kgErrored != null" >
+	    		kg_errored = #{kgErrored},
+	    			</if>
+	    			<if test="kgError != null" >
+	    		kg_error = #{kgError},
+	    			</if>
+	    			<if test="zgErrored != null" >
+	    		zg_errored = #{zgErrored},
+	    			</if>
+	    			<if test="zgError != null" >
+	    		zg_error = #{zgError},
+	    			</if>
+	    			<if test="imgArrayStr != null" >
+	    		img_array_str = #{imgArrayStr},
+	    			</if>
+    		</set>
+    		<where>
+	    			<if test="id != null" >
+	    		and id = #{id}
+	    			</if>
+	    			<if test="examId != null" >
+	    		and exam_id = #{examId}
+	    			</if>
+	    			<if test="subjectId != null" >
+	    		and subject_id = #{subjectId}
+	    			</if>
+	    			<if test="subjectName != null" >
+	    		and subject_name = #{subjectName}
+	    			</if>
+	    			<if test="sheetId != null" >
+	    		and sheet_id = #{sheetId}
+	    			</if>
+	    			<if test="cryptCode != null" >
+	    		and crypt_code = #{cryptCode}
+	    			</if>
+	    			<if test="zkzh != null" >
+	    		and zkzh = #{zkzh}
+	    			</if>
+	    			<if test="totalScore != null" >
+	    		and total_score = #{totalScore}
+	    			</if>
+	    			<if test="kgScoreJson != null" >
+	    		and kg_score_json = #{kgScoreJson}
+	    			</if>
+	    			<if test="zgScoreJson != null" >
+	    		and zg_score_json = #{zgScoreJson}
+	    			</if>
+	    			<if test="kgErrored != null" >
+	    		and kg_errored = #{kgErrored}
+	    			</if>
+	    			<if test="kgError != null" >
+	    		and kg_error = #{kgError}
+	    			</if>
+	    			<if test="zgErrored != null" >
+	    		and zg_errored = #{zgErrored}
+	    			</if>
+	    			<if test="zgError != null" >
+	    		and zg_error = #{zgError}
+	    			</if>
+	    			<if test="imgArrayStr != null" >
+	    		and img_array_str = #{imgArrayStr}
+	    			</if>
+    		</where>
+    	</update>
+    	<!-- 查询列表 -->
+    	<select id="listPsSubjectScore" parameterType="com.whty.edu.brain.ig.service.api.vo.PsSubjectScoreVO" resultMap="PsSubjectScoreMap">
+    		select * from ps_subject_score
+    		<where>
+	    			<if test="id != null" >
+	    		and id = #{id}
+	    			</if>
+	    			<if test="examId != null" >
+	    		and exam_id = #{examId}
+	    			</if>
+	    			<if test="subjectId != null" >
+	    		and subject_id = #{subjectId}
+	    			</if>
+	    			<if test="subjectName != null" >
+	    		and subject_name = #{subjectName}
+	    			</if>
+	    			<if test="sheetId != null" >
+	    		and sheet_id = #{sheetId}
+	    			</if>
+	    			<if test="cryptCode != null" >
+	    		and crypt_code = #{cryptCode}
+	    			</if>
+	    			<if test="zkzh != null" >
+	    		and zkzh = #{zkzh}
+	    			</if>
+	    			<if test="totalScore != null" >
+	    		and total_score = #{totalScore}
+	    			</if>
+	    			<if test="kgScoreJson != null" >
+	    		and kg_score_json = #{kgScoreJson}
+	    			</if>
+	    			<if test="zgScoreJson != null" >
+	    		and zg_score_json = #{zgScoreJson}
+	    			</if>
+	    			<if test="kgErrored != null" >
+	    		and kg_errored = #{kgErrored}
+	    			</if>
+	    			<if test="kgError != null" >
+	    		and kg_error = #{kgError}
+	    			</if>
+	    			<if test="zgErrored != null" >
+	    		and zg_errored = #{zgErrored}
+	    			</if>
+	    			<if test="zgError != null" >
+	    		and zg_error = #{zgError}
+	    			</if>
+	    			<if test="imgArrayStr != null" >
+	    		and img_array_str = #{imgArrayStr}
+	    			</if>
+    		</where>
+    	</select>
+</mapper>

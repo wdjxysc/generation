@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>输入用户名：将与IP绑定</title>
+<style type="text/css">
+	div{
+		height: -webkit-fill-available;
+    	text-align: center;
+    	background-color: #03A9F4;
+	}	
+	.uname{
+		margin-top: 38%;
+	    height: 34px;
+	    width: 200px;
+	    border-radius: 6px;
+	    border: 1px solid #a09c9c;
+	    text-indent: 7px;
+	}
+	.goroom{
+		height: 34px;
+	    background-color: #d3e14b;
+	    width: 50px;
+	    border: none;
+	    border-radius: 6px;
+	    box-shadow: -1px 4px 20px 0px;
+	}
+</style>
+</head>
+<body>
+	<div>
+		<input class="uname" id="uname" type="text" value="" placeholder="输入用户名">
+		<input class="goroom" type="button" value="＞" onclick="goroom()">
+	</div>
+</body>
+<script type="text/javascript">
+	function goroom(){
+		var uname = document.getElementById("uname").value;
+		if(uname != null && uname != undefined && uname.length > 0){
+			window.location.href = '/chat/room.view?uname=' + uname;
+		}
+	}
+</script>
+</html>

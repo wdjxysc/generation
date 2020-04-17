@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whty.edu.brain.ig.service.api.dao.PsAnswerSheetItemDAO">
+		<resultMap type="com.whty.edu.brain.ig.service.api.vo.PsAnswerSheetItemVO" id="PsAnswerSheetItemMap">
+			<result column="id" property="id" jdbcType="BIGINT" />
+			<result column="answer_sheet_item_id" property="answerSheetItemId" jdbcType="VARCHAR" />
+			<result column="parent_item_id" property="parentItemId" jdbcType="VARCHAR" />
+			<result column="exam_id" property="examId" jdbcType="VARCHAR" />
+			<result column="answer_sheet_id" property="answerSheetId" jdbcType="VARCHAR" />
+			<result column="origin_item_id" property="originItemId" jdbcType="VARCHAR" />
+			<result column="scanSeq" property="scanSeq" jdbcType="VARCHAR" />
+			<result column="name" property="name" jdbcType="VARCHAR" />
+			<result column="catagory1" property="catagory1" jdbcType="TINYINT" />
+			<result column="catagory2" property="catagory2" jdbcType="TINYINT" />
+			<result column="score" property="score" jdbcType="FLOAT" />
+			<result column="required" property="required" jdbcType="TINYINT" />
+			<result column="num" property="num" jdbcType="TINYINT" />
+			<result column="content" property="content" jdbcType="VARCHAR" />
+			<result column="st_type" property="stType" jdbcType="TINYINT" />
+			<result column="readonly" property="readonly" jdbcType="TINYINT" />
+			<result column="rule" property="rule" jdbcType="TINYINT" />
+			<result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+			<result column="last_operator_id" property="lastOperatorId" jdbcType="VARCHAR" />
+			<result column="last_operator_name" property="lastOperatorName" jdbcType="VARCHAR" />
+			<result column="is_del" property="isDel" jdbcType="TINYINT" />
+			<result column="knowledge_id" property="knowledgeId" jdbcType="VARCHAR" />
+			<result column="knowledge" property="knowledge" jdbcType="VARCHAR" />
+			<result column="groups" property="groups" jdbcType="VARCHAR" />
+			<result column="subject_id" property="subjectId" jdbcType="VARCHAR" />
+		</resultMap>
+		<!-- 新增 -->
+    	<insert id="insertPsAnswerSheetItem" parameterType="com.whty.edu.brain.ig.service.api.vo.PsAnswerSheetItemVO">
+    		insert into ps_answer_sheet_item(
+    			id,
+    			answer_sheet_item_id,
+    			parent_item_id,
+    			exam_id,
+    			answer_sheet_id,
+    			origin_item_id,
+    			scanSeq,
+    			name,
+    			catagory1,
+    			catagory2,
+    			score,
+    			required,
+    			num,
+    			content,
+    			st_type,
+    			readonly,
+    			rule,
+    			last_update_time,
+    			last_operator_id,
+    			last_operator_name,
+    			is_del,
+    			knowledge_id,
+    			knowledge,
+    			groups,
+    			subject_id
+    		)values(
+    			#{id},
+    			#{answerSheetItemId},
+    			#{parentItemId},
+    			#{examId},
+    			#{answerSheetId},
+    			#{originItemId},
+    			#{scanSeq},
+    			#{name},
+    			#{catagory1},
+    			#{catagory2},
+    			#{score},
+    			#{required},
+    			#{num},
+    			#{content},
+    			#{stType},
+    			#{readonly},
+    			#{rule},
+    			#{lastUpdateTime},
+    			#{lastOperatorId},
+    			#{lastOperatorName},
+    			#{isDel},
+    			#{knowledgeId},
+    			#{knowledge},
+    			#{groups},
+    			#{subjectId}
+    		)
+    	</insert>
+    	<!-- 删除 -->
+    	<delete id="deletePsAnswerSheetItem" parameterType="com.whty.edu.brain.ig.service.api.vo.PsAnswerSheetItemVO">
+    		delete from ps_answer_sheet_item
+    		<where>
+	    			<if test="id != null" >
+	    		and id = #{id}
+	    			</if>
+	    			<if test="answerSheetItemId != null" >
+	    		and answer_sheet_item_id = #{answerSheetItemId}
+	    			</if>
+	    			<if test="parentItemId != null" >
+	    		and parent_item_id = #{parentItemId}
+	    			</if>
+	    			<if test="examId != null" >
+	    		and exam_id = #{examId}
+	    			</if>
+	    			<if test="answerSheetId != null" >
+	    		and answer_sheet_id = #{answerSheetId}
+	    			</if>
+	    			<if test="originItemId != null" >
+	    		and origin_item_id = #{originItemId}
+	    			</if>
+	    			<if test="scanSeq != null" >
+	    		and scanSeq = #{scanSeq}
+	    			</if>
+	    			<if test="name != null" >
+	    		and name = #{name}
+	    			</if>
+	    			<if test="catagory1 != null" >
+	    		and catagory1 = #{catagory1}
+	    			</if>
+	    			<if test="catagory2 != null" >
+	    		and catagory2 = #{catagory2}
+	    			</if>
+	    			<if test="score != null" >
+	    		and score = #{score}
+	    			</if>
+	    			<if test="required != null" >
+	    		and required = #{required}
+	    			</if>
+	    			<if test="num != null" >
+	    		and num = #{num}
+	    			</if>
+	    			<if test="content != null" >
+	    		and content = #{content}
+	    			</if>
+	    			<if test="stType != null" >
+	    		and st_type = #{stType}
+	    			</if>
+	    			<if test="readonly != null" >
+	    		and readonly = #{readonly}
+	    			</if>
+	    			<if test="rule != null" >
+	    		and rule = #{rule}
+	    			</if>
+	    			<if test="lastUpdateTime != null" >
+	    		and last_update_time = #{lastUpdateTime}
+	    			</if>
+	    			<if test="lastOperatorId != null" >
+	    		and last_operator_id = #{lastOperatorId}
+	    			</if>
+	    			<if test="lastOperatorName != null" >
+	    		and last_operator_name = #{lastOperatorName}
+	    			</if>
+	    			<if test="isDel != null" >
+	    		and is_del = #{isDel}
+	    			</if>
+	    			<if test="knowledgeId != null" >
+	    		and knowledge_id = #{knowledgeId}
+	    			</if>
+	    			<if test="knowledge != null" >
+	    		and knowledge = #{knowledge}
+	    			</if>
+	    			<if test="groups != null" >
+	    		and groups = #{groups}
+	    			</if>
+	    			<if test="subjectId != null" >
+	    		and subject_id = #{subjectId}
+	    			</if>
+    		</where>
+    	</delete>
+    	<!-- 更新 -->
+    	<update id="updatePsAnswerSheetItem" parameterType="com.whty.edu.brain.ig.service.api.vo.PsAnswerSheetItemVO">
+    		update ps_answer_sheet_item
+    		<set>
+	    			<if test="id != null" >
+	    		id = #{id},
+	    			</if>
+	    			<if test="answerSheetItemId != null" >
+	    		answer_sheet_item_id = #{answerSheetItemId},
+	    			</if>
+	    			<if test="parentItemId != null" >
+	    		parent_item_id = #{parentItemId},
+	    			</if>
+	    			<if test="examId != null" >
+	    		exam_id = #{examId},
+	    			</if>
+	    			<if test="answerSheetId != null" >
+	    		answer_sheet_id = #{answerSheetId},
+	    			</if>
+	    			<if test="originItemId != null" >
+	    		origin_item_id = #{originItemId},
+	    			</if>
+	    			<if test="scanSeq != null" >
+	    		scanSeq = #{scanSeq},
+	    			</if>
+	    			<if test="name != null" >
+	    		name = #{name},
+	    			</if>
+	    			<if test="catagory1 != null" >
+	    		catagory1 = #{catagory1},
+	    			</if>
+	    			<if test="catagory2 != null" >
+	    		catagory2 = #{catagory2},
+	    			</if>
+	    			<if test="score != null" >
+	    		score = #{score},
+	    			</if>
+	    			<if test="required != null" >
+	    		required = #{required},
+	    			</if>
+	    			<if test="num != null" >
+	    		num = #{num},
+	    			</if>
+	    			<if test="content != null" >
+	    		content = #{content},
+	    			</if>
+	    			<if test="stType != null" >
+	    		st_type = #{stType},
+	    			</if>
+	    			<if test="readonly != null" >
+	    		readonly = #{readonly},
+	    			</if>
+	    			<if test="rule != null" >
+	    		rule = #{rule},
+	    			</if>
+	    			<if test="lastUpdateTime != null" >
+	    		last_update_time = #{lastUpdateTime},
+	    			</if>
+	    			<if test="lastOperatorId != null" >
+	    		last_operator_id = #{lastOperatorId},
+	    			</if>
+	    			<if test="lastOperatorName != null" >
+	    		last_operator_name = #{lastOperatorName},
+	    			</if>
+	    			<if test="isDel != null" >
+	    		is_del = #{isDel},
+	    			</if>
+	    			<if test="knowledgeId != null" >
+	    		knowledge_id = #{knowledgeId},
+	    			</if>
+	    			<if test="knowledge != null" >
+	    		knowledge = #{knowledge},
+	    			</if>
+	    			<if test="groups != null" >
+	    		groups = #{groups},
+	    			</if>
+	    			<if test="subjectId != null" >
+	    		subject_id = #{subjectId},
+	    			</if>
+    		</set>
+    		<where>
+	    			<if test="id != null" >
+	    		and id = #{id}
+	    			</if>
+	    			<if test="answerSheetItemId != null" >
+	    		and answer_sheet_item_id = #{answerSheetItemId}
+	    			</if>
+	    			<if test="parentItemId != null" >
+	    		and parent_item_id = #{parentItemId}
+	    			</if>
+	    			<if test="examId != null" >
+	    		and exam_id = #{examId}
+	    			</if>
+	    			<if test="answerSheetId != null" >
+	    		and answer_sheet_id = #{answerSheetId}
+	    			</if>
+	    			<if test="originItemId != null" >
+	    		and origin_item_id = #{originItemId}
+	    			</if>
+	    			<if test="scanSeq != null" >
+	    		and scanSeq = #{scanSeq}
+	    			</if>
+	    			<if test="name != null" >
+	    		and name = #{name}
+	    			</if>
+	    			<if test="catagory1 != null" >
+	    		and catagory1 = #{catagory1}
+	    			</if>
+	    			<if test="catagory2 != null" >
+	    		and catagory2 = #{catagory2}
+	    			</if>
+	    			<if test="score != null" >
+	    		and score = #{score}
+	    			</if>
+	    			<if test="required != null" >
+	    		and required = #{required}
+	    			</if>
+	    			<if test="num != null" >
+	    		and num = #{num}
+	    			</if>
+	    			<if test="content != null" >
+	    		and content = #{content}
+	    			</if>
+	    			<if test="stType != null" >
+	    		and st_type = #{stType}
+	    			</if>
+	    			<if test="readonly != null" >
+	    		and readonly = #{readonly}
+	    			</if>
+	    			<if test="rule != null" >
+	    		and rule = #{rule}
+	    			</if>
+	    			<if test="lastUpdateTime != null" >
+	    		and last_update_time = #{lastUpdateTime}
+	    			</if>
+	    			<if test="lastOperatorId != null" >
+	    		and last_operator_id = #{lastOperatorId}
+	    			</if>
+	    			<if test="lastOperatorName != null" >
+	    		and last_operator_name = #{lastOperatorName}
+	    			</if>
+	    			<if test="isDel != null" >
+	    		and is_del = #{isDel}
+	    			</if>
+	    			<if test="knowledgeId != null" >
+	    		and knowledge_id = #{knowledgeId}
+	    			</if>
+	    			<if test="knowledge != null" >
+	    		and knowledge = #{knowledge}
+	    			</if>
+	    			<if test="groups != null" >
+	    		and groups = #{groups}
+	    			</if>
+	    			<if test="subjectId != null" >
+	    		and subject_id = #{subjectId}
+	    			</if>
+    		</where>
+    	</update>
+    	<!-- 查询列表 -->
+    	<select id="listPsAnswerSheetItem" parameterType="com.whty.edu.brain.ig.service.api.vo.PsAnswerSheetItemVO" resultMap="PsAnswerSheetItemMap">
+    		select * from ps_answer_sheet_item
+    		<where>
+	    			<if test="id != null" >
+	    		and id = #{id}
+	    			</if>
+	    			<if test="answerSheetItemId != null" >
+	    		and answer_sheet_item_id = #{answerSheetItemId}
+	    			</if>
+	    			<if test="parentItemId != null" >
+	    		and parent_item_id = #{parentItemId}
+	    			</if>
+	    			<if test="examId != null" >
+	    		and exam_id = #{examId}
+	    			</if>
+	    			<if test="answerSheetId != null" >
+	    		and answer_sheet_id = #{answerSheetId}
+	    			</if>
+	    			<if test="originItemId != null" >
+	    		and origin_item_id = #{originItemId}
+	    			</if>
+	    			<if test="scanSeq != null" >
+	    		and scanSeq = #{scanSeq}
+	    			</if>
+	    			<if test="name != null" >
+	    		and name = #{name}
+	    			</if>
+	    			<if test="catagory1 != null" >
+	    		and catagory1 = #{catagory1}
+	    			</if>
+	    			<if test="catagory2 != null" >
+	    		and catagory2 = #{catagory2}
+	    			</if>
+	    			<if test="score != null" >
+	    		and score = #{score}
+	    			</if>
+	    			<if test="required != null" >
+	    		and required = #{required}
+	    			</if>
+	    			<if test="num != null" >
+	    		and num = #{num}
+	    			</if>
+	    			<if test="content != null" >
+	    		and content = #{content}
+	    			</if>
+	    			<if test="stType != null" >
+	    		and st_type = #{stType}
+	    			</if>
+	    			<if test="readonly != null" >
+	    		and readonly = #{readonly}
+	    			</if>
+	    			<if test="rule != null" >
+	    		and rule = #{rule}
+	    			</if>
+	    			<if test="lastUpdateTime != null" >
+	    		and last_update_time = #{lastUpdateTime}
+	    			</if>
+	    			<if test="lastOperatorId != null" >
+	    		and last_operator_id = #{lastOperatorId}
+	    			</if>
+	    			<if test="lastOperatorName != null" >
+	    		and last_operator_name = #{lastOperatorName}
+	    			</if>
+	    			<if test="isDel != null" >
+	    		and is_del = #{isDel}
+	    			</if>
+	    			<if test="knowledgeId != null" >
+	    		and knowledge_id = #{knowledgeId}
+	    			</if>
+	    			<if test="knowledge != null" >
+	    		and knowledge = #{knowledge}
+	    			</if>
+	    			<if test="groups != null" >
+	    		and groups = #{groups}
+	    			</if>
+	    			<if test="subjectId != null" >
+	    		and subject_id = #{subjectId}
+	    			</if>
+    		</where>
+    	</select>
+</mapper>

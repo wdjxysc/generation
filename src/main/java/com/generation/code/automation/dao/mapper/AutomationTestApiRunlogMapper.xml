@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.generation.code.automation.dao.AutomationTestApiRunlogDAO">
+		<resultMap type="com.generation.code.automation.vo.AutomationTestApiRunlogVO" id="AutomationTestApiRunlogMap">
+					<result column="api_code" property="apiCode" jdbcType="VARCHAR" />
+					<result column="api_run_status" property="apiRunStatus" jdbcType="VARCHAR" />
+					<result column="api_run_status_code" property="apiRunStatusCode" jdbcType="VARCHAR" />
+					<result column="api_run_result_content" property="apiRunResultContent" jdbcType="VARCHAR" />
+					<result column="api_run_date" property="apiRunDate" jdbcType="DATE" />
+		</resultMap>
+		<!-- 新增 -->
+    	<insert id="insertAutomationTestApiRunlog" parameterType="com.generation.code.automation.vo.AutomationTestApiRunlogVO">
+    		insert into automation_test_api_runlog(
+    					api_code,
+    					api_run_status,
+    					api_run_status_code,
+    					api_run_result_content,
+    					api_run_date
+    		)values(
+    					#{apiCode},
+    					#{apiRunStatus},
+    					#{apiRunStatusCode},
+    					#{apiRunResultContent},
+    					#{apiRunDate}
+    		)
+    	</insert>
+    	<!-- 删除 -->
+    	<delete id="deleteAutomationTestApiRunlog" parameterType="com.generation.code.automation.vo.AutomationTestApiRunlogVO">
+    		delete from automation_test_api_runlog
+    		<where>
+	    			<if test="apiCode != null" >
+	    				and api_code = #{apiCode},
+	    			</if>
+	    			<if test="apiRunStatus != null" >
+	    				and api_run_status = #{apiRunStatus},
+	    			</if>
+	    			<if test="apiRunStatusCode != null" >
+	    				and api_run_status_code = #{apiRunStatusCode},
+	    			</if>
+	    			<if test="apiRunResultContent != null" >
+	    				and api_run_result_content = #{apiRunResultContent},
+	    			</if>
+	    			<if test="apiRunDate != null" >
+	    				and api_run_date = #{apiRunDate},
+	    			</if>
+    		</where>
+    	</delete>
+    	<!-- 更新 -->
+    	<update id="updateAutomationTestApiRunlog" parameterType="com.generation.code.automation.vo.AutomationTestApiRunlogVO">
+    		update automation_test_api_runlog
+    		<set>
+	    			<if test="apiCode != null" >
+	    				api_code = #{apiCode},
+	    			</if>
+	    			<if test="apiRunStatus != null" >
+	    				api_run_status = #{apiRunStatus},
+	    			</if>
+	    			<if test="apiRunStatusCode != null" >
+	    				api_run_status_code = #{apiRunStatusCode},
+	    			</if>
+	    			<if test="apiRunResultContent != null" >
+	    				api_run_result_content = #{apiRunResultContent},
+	    			</if>
+	    			<if test="apiRunDate != null" >
+	    				api_run_date = #{apiRunDate},
+	    			</if>
+    		</set>
+    		<where>
+	    			<if test="apiCode != null" >
+	    				and api_code = #{apiCode},
+	    			</if>
+	    			<if test="apiRunStatus != null" >
+	    				and api_run_status = #{apiRunStatus},
+	    			</if>
+	    			<if test="apiRunStatusCode != null" >
+	    				and api_run_status_code = #{apiRunStatusCode},
+	    			</if>
+	    			<if test="apiRunResultContent != null" >
+	    				and api_run_result_content = #{apiRunResultContent},
+	    			</if>
+	    			<if test="apiRunDate != null" >
+	    				and api_run_date = #{apiRunDate},
+	    			</if>
+    		</where>
+    	</update>
+    	<!-- 查询列表 -->
+    	<select id="listAutomationTestApiRunlog" parameterType="com.generation.code.automation.vo.AutomationTestApiRunlogVO" resultMap="AutomationTestApiRunlogMap">
+    		select * from automation_test_api_runlog
+    		<where>
+	    			<if test="apiCode != null" >
+	    				and api_code = #{apiCode},
+	    			</if>
+	    			<if test="apiRunStatus != null" >
+	    				and api_run_status = #{apiRunStatus},
+	    			</if>
+	    			<if test="apiRunStatusCode != null" >
+	    				and api_run_status_code = #{apiRunStatusCode},
+	    			</if>
+	    			<if test="apiRunResultContent != null" >
+	    				and api_run_result_content = #{apiRunResultContent},
+	    			</if>
+	    			<if test="apiRunDate != null" >
+	    				and api_run_date = #{apiRunDate},
+	    			</if>
+    		</where>
+    	</select>
+</mapper>

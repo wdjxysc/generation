@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.generation.code.automation.dao.AutomationTestApiParamsDAO">
+		<resultMap type="com.generation.code.automation.vo.AutomationTestApiParamsVO" id="AutomationTestApiParamsMap">
+					<result column="api_code" property="apiCode" jdbcType="VARCHAR" />
+					<result column="api_param_key" property="apiParamKey" jdbcType="VARCHAR" />
+					<result column="api_param_value" property="apiParamValue" jdbcType="VARCHAR" />
+					<result column="api_param_type" property="apiParamType" jdbcType="VARCHAR" />
+					<result column="api_param_prefix" property="apiParamPrefix" jdbcType="VARCHAR" />
+					<result column="api_param_random_value" property="apiParamRandomValue" jdbcType="INTEGER" />
+					<result column="api_param_required" property="apiParamRequired" jdbcType="INTEGER" />
+					<result column="api_param_max_length" property="apiParamMaxLength" jdbcType="INTEGER" />
+		</resultMap>
+		<!-- 新增 -->
+    	<insert id="insertAutomationTestApiParams" parameterType="com.generation.code.automation.vo.AutomationTestApiParamsVO">
+    		insert into automation_test_api_params(
+    					api_code,
+    					api_param_key,
+    					api_param_value,
+    					api_param_type,
+    					api_param_prefix,
+    					api_param_random_value,
+    					api_param_required,
+    					api_param_max_length
+    		)values(
+    					#{apiCode},
+    					#{apiParamKey},
+    					#{apiParamValue},
+    					#{apiParamType},
+    					#{apiParamPrefix},
+    					#{apiParamRandomValue},
+    					#{apiParamRequired},
+    					#{apiParamMaxLength}
+    		)
+    	</insert>
+    	<!-- 删除 -->
+    	<delete id="deleteAutomationTestApiParams" parameterType="com.generation.code.automation.vo.AutomationTestApiParamsVO">
+    		delete from automation_test_api_params
+    		<where>
+	    			<if test="apiCode != null" >
+	    				and api_code = #{apiCode},
+	    			</if>
+	    			<if test="apiParamKey != null" >
+	    				and api_param_key = #{apiParamKey},
+	    			</if>
+	    			<if test="apiParamValue != null" >
+	    				and api_param_value = #{apiParamValue},
+	    			</if>
+	    			<if test="apiParamType != null" >
+	    				and api_param_type = #{apiParamType},
+	    			</if>
+	    			<if test="apiParamPrefix != null" >
+	    				and api_param_prefix = #{apiParamPrefix},
+	    			</if>
+	    			<if test="apiParamRandomValue != null" >
+	    				and api_param_random_value = #{apiParamRandomValue},
+	    			</if>
+	    			<if test="apiParamRequired != null" >
+	    				and api_param_required = #{apiParamRequired},
+	    			</if>
+	    			<if test="apiParamMaxLength != null" >
+	    				and api_param_max_length = #{apiParamMaxLength},
+	    			</if>
+    		</where>
+    	</delete>
+    	<!-- 更新 -->
+    	<update id="updateAutomationTestApiParams" parameterType="com.generation.code.automation.vo.AutomationTestApiParamsVO">
+    		update automation_test_api_params
+    		<set>
+	    			<if test="apiCode != null" >
+	    				api_code = #{apiCode},
+	    			</if>
+	    			<if test="apiParamKey != null" >
+	    				api_param_key = #{apiParamKey},
+	    			</if>
+	    			<if test="apiParamValue != null" >
+	    				api_param_value = #{apiParamValue},
+	    			</if>
+	    			<if test="apiParamType != null" >
+	    				api_param_type = #{apiParamType},
+	    			</if>
+	    			<if test="apiParamPrefix != null" >
+	    				api_param_prefix = #{apiParamPrefix},
+	    			</if>
+	    			<if test="apiParamRandomValue != null" >
+	    				api_param_random_value = #{apiParamRandomValue},
+	    			</if>
+	    			<if test="apiParamRequired != null" >
+	    				api_param_required = #{apiParamRequired},
+	    			</if>
+	    			<if test="apiParamMaxLength != null" >
+	    				api_param_max_length = #{apiParamMaxLength},
+	    			</if>
+    		</set>
+    		<where>
+	    			<if test="apiCode != null" >
+	    				and api_code = #{apiCode},
+	    			</if>
+	    			<if test="apiParamKey != null" >
+	    				and api_param_key = #{apiParamKey},
+	    			</if>
+	    			<if test="apiParamValue != null" >
+	    				and api_param_value = #{apiParamValue},
+	    			</if>
+	    			<if test="apiParamType != null" >
+	    				and api_param_type = #{apiParamType},
+	    			</if>
+	    			<if test="apiParamPrefix != null" >
+	    				and api_param_prefix = #{apiParamPrefix},
+	    			</if>
+	    			<if test="apiParamRandomValue != null" >
+	    				and api_param_random_value = #{apiParamRandomValue},
+	    			</if>
+	    			<if test="apiParamRequired != null" >
+	    				and api_param_required = #{apiParamRequired},
+	    			</if>
+	    			<if test="apiParamMaxLength != null" >
+	    				and api_param_max_length = #{apiParamMaxLength},
+	    			</if>
+    		</where>
+    	</update>
+    	<!-- 查询列表 -->
+    	<select id="listAutomationTestApiParams" parameterType="com.generation.code.automation.vo.AutomationTestApiParamsVO" resultMap="AutomationTestApiParamsMap">
+    		select * from automation_test_api_params
+    		<where>
+	    			<if test="apiCode != null" >
+	    				and api_code = #{apiCode},
+	    			</if>
+	    			<if test="apiParamKey != null" >
+	    				and api_param_key = #{apiParamKey},
+	    			</if>
+	    			<if test="apiParamValue != null" >
+	    				and api_param_value = #{apiParamValue},
+	    			</if>
+	    			<if test="apiParamType != null" >
+	    				and api_param_type = #{apiParamType},
+	    			</if>
+	    			<if test="apiParamPrefix != null" >
+	    				and api_param_prefix = #{apiParamPrefix},
+	    			</if>
+	    			<if test="apiParamRandomValue != null" >
+	    				and api_param_random_value = #{apiParamRandomValue},
+	    			</if>
+	    			<if test="apiParamRequired != null" >
+	    				and api_param_required = #{apiParamRequired},
+	    			</if>
+	    			<if test="apiParamMaxLength != null" >
+	    				and api_param_max_length = #{apiParamMaxLength},
+	    			</if>
+    		</where>
+    	</select>
+</mapper>

@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whty.edu.brain.ig.service.api.dao.PsKgMarkDAO">
+		<resultMap type="com.whty.edu.brain.ig.service.api.vo.PsKgMarkVO" id="PsKgMarkMap">
+			<result column="id" property="id" jdbcType="BIGINT" />
+			<result column="mark_id" property="markId" jdbcType="VARCHAR" />
+			<result column="exam_id" property="examId" jdbcType="VARCHAR" />
+			<result column="batch_id" property="batchId" jdbcType="VARCHAR" />
+			<result column="answer_sheet_item_id" property="answerSheetItemId" jdbcType="VARCHAR" />
+			<result column="sheet_id" property="sheetId" jdbcType="VARCHAR" />
+			<result column="fetch_time" property="fetchTime" jdbcType="TIMESTAMP" />
+			<result column="marker_id" property="markerId" jdbcType="VARCHAR" />
+			<result column="marker_name" property="markerName" jdbcType="VARCHAR" />
+			<result column="handle_time" property="handleTime" jdbcType="TIMESTAMP" />
+			<result column="crypt_code" property="cryptCode" jdbcType="VARCHAR" />
+			<result column="score" property="score" jdbcType="FLOAT" />
+			<result column="scores" property="scores" jdbcType="VARCHAR" />
+			<result column="optional" property="optional" jdbcType="VARCHAR" />
+			<result column="doubt" property="doubt" jdbcType="TINYINT" />
+			<result column="doubt_done" property="doubtDone" jdbcType="TINYINT" />
+			<result column="is_del" property="isDel" jdbcType="TINYINT" />
+		</resultMap>
+		<!-- 新增 -->
+    	<insert id="insertPsKgMark" parameterType="com.whty.edu.brain.ig.service.api.vo.PsKgMarkVO">
+    		insert into ps_kg_mark(
+    			id,
+    			mark_id,
+    			exam_id,
+    			batch_id,
+    			answer_sheet_item_id,
+    			sheet_id,
+    			fetch_time,
+    			marker_id,
+    			marker_name,
+    			handle_time,
+    			crypt_code,
+    			score,
+    			scores,
+    			optional,
+    			doubt,
+    			doubt_done,
+    			is_del
+    		)values(
+    			#{id},
+    			#{markId},
+    			#{examId},
+    			#{batchId},
+    			#{answerSheetItemId},
+    			#{sheetId},
+    			#{fetchTime},
+    			#{markerId},
+    			#{markerName},
+    			#{handleTime},
+    			#{cryptCode},
+    			#{score},
+    			#{scores},
+    			#{optional},
+    			#{doubt},
+    			#{doubtDone},
+    			#{isDel}
+    		)
+    	</insert>
+    	<!-- 删除 -->
+    	<delete id="deletePsKgMark" parameterType="com.whty.edu.brain.ig.service.api.vo.PsKgMarkVO">
+    		delete from ps_kg_mark
+    		<where>
+	    			<if test="id != null" >
+	    		and id = #{id}
+	    			</if>
+	    			<if test="markId != null" >
+	    		and mark_id = #{markId}
+	    			</if>
+	    			<if test="examId != null" >
+	    		and exam_id = #{examId}
+	    			</if>
+	    			<if test="batchId != null" >
+	    		and batch_id = #{batchId}
+	    			</if>
+	    			<if test="answerSheetItemId != null" >
+	    		and answer_sheet_item_id = #{answerSheetItemId}
+	    			</if>
+	    			<if test="sheetId != null" >
+	    		and sheet_id = #{sheetId}
+	    			</if>
+	    			<if test="fetchTime != null" >
+	    		and fetch_time = #{fetchTime}
+	    			</if>
+	    			<if test="markerId != null" >
+	    		and marker_id = #{markerId}
+	    			</if>
+	    			<if test="markerName != null" >
+	    		and marker_name = #{markerName}
+	    			</if>
+	    			<if test="handleTime != null" >
+	    		and handle_time = #{handleTime}
+	    			</if>
+	    			<if test="cryptCode != null" >
+	    		and crypt_code = #{cryptCode}
+	    			</if>
+	    			<if test="score != null" >
+	    		and score = #{score}
+	    			</if>
+	    			<if test="scores != null" >
+	    		and scores = #{scores}
+	    			</if>
+	    			<if test="optional != null" >
+	    		and optional = #{optional}
+	    			</if>
+	    			<if test="doubt != null" >
+	    		and doubt = #{doubt}
+	    			</if>
+	    			<if test="doubtDone != null" >
+	    		and doubt_done = #{doubtDone}
+	    			</if>
+	    			<if test="isDel != null" >
+	    		and is_del = #{isDel}
+	    			</if>
+    		</where>
+    	</delete>
+    	<!-- 更新 -->
+    	<update id="updatePsKgMark" parameterType="com.whty.edu.brain.ig.service.api.vo.PsKgMarkVO">
+    		update ps_kg_mark
+    		<set>
+	    			<if test="id != null" >
+	    		id = #{id},
+	    			</if>
+	    			<if test="markId != null" >
+	    		mark_id = #{markId},
+	    			</if>
+	    			<if test="examId != null" >
+	    		exam_id = #{examId},
+	    			</if>
+	    			<if test="batchId != null" >
+	    		batch_id = #{batchId},
+	    			</if>
+	    			<if test="answerSheetItemId != null" >
+	    		answer_sheet_item_id = #{answerSheetItemId},
+	    			</if>
+	    			<if test="sheetId != null" >
+	    		sheet_id = #{sheetId},
+	    			</if>
+	    			<if test="fetchTime != null" >
+	    		fetch_time = #{fetchTime},
+	    			</if>
+	    			<if test="markerId != null" >
+	    		marker_id = #{markerId},
+	    			</if>
+	    			<if test="markerName != null" >
+	    		marker_name = #{markerName},
+	    			</if>
+	    			<if test="handleTime != null" >
+	    		handle_time = #{handleTime},
+	    			</if>
+	    			<if test="cryptCode != null" >
+	    		crypt_code = #{cryptCode},
+	    			</if>
+	    			<if test="score != null" >
+	    		score = #{score},
+	    			</if>
+	    			<if test="scores != null" >
+	    		scores = #{scores},
+	    			</if>
+	    			<if test="optional != null" >
+	    		optional = #{optional},
+	    			</if>
+	    			<if test="doubt != null" >
+	    		doubt = #{doubt},
+	    			</if>
+	    			<if test="doubtDone != null" >
+	    		doubt_done = #{doubtDone},
+	    			</if>
+	    			<if test="isDel != null" >
+	    		is_del = #{isDel},
+	    			</if>
+    		</set>
+    		<where>
+	    			<if test="id != null" >
+	    		and id = #{id}
+	    			</if>
+	    			<if test="markId != null" >
+	    		and mark_id = #{markId}
+	    			</if>
+	    			<if test="examId != null" >
+	    		and exam_id = #{examId}
+	    			</if>
+	    			<if test="batchId != null" >
+	    		and batch_id = #{batchId}
+	    			</if>
+	    			<if test="answerSheetItemId != null" >
+	    		and answer_sheet_item_id = #{answerSheetItemId}
+	    			</if>
+	    			<if test="sheetId != null" >
+	    		and sheet_id = #{sheetId}
+	    			</if>
+	    			<if test="fetchTime != null" >
+	    		and fetch_time = #{fetchTime}
+	    			</if>
+	    			<if test="markerId != null" >
+	    		and marker_id = #{markerId}
+	    			</if>
+	    			<if test="markerName != null" >
+	    		and marker_name = #{markerName}
+	    			</if>
+	    			<if test="handleTime != null" >
+	    		and handle_time = #{handleTime}
+	    			</if>
+	    			<if test="cryptCode != null" >
+	    		and crypt_code = #{cryptCode}
+	    			</if>
+	    			<if test="score != null" >
+	    		and score = #{score}
+	    			</if>
+	    			<if test="scores != null" >
+	    		and scores = #{scores}
+	    			</if>
+	    			<if test="optional != null" >
+	    		and optional = #{optional}
+	    			</if>
+	    			<if test="doubt != null" >
+	    		and doubt = #{doubt}
+	    			</if>
+	    			<if test="doubtDone != null" >
+	    		and doubt_done = #{doubtDone}
+	    			</if>
+	    			<if test="isDel != null" >
+	    		and is_del = #{isDel}
+	    			</if>
+    		</where>
+    	</update>
+    	<!-- 查询列表 -->
+    	<select id="listPsKgMark" parameterType="com.whty.edu.brain.ig.service.api.vo.PsKgMarkVO" resultMap="PsKgMarkMap">
+    		select * from ps_kg_mark
+    		<where>
+	    			<if test="id != null" >
+	    		and id = #{id}
+	    			</if>
+	    			<if test="markId != null" >
+	    		and mark_id = #{markId}
+	    			</if>
+	    			<if test="examId != null" >
+	    		and exam_id = #{examId}
+	    			</if>
+	    			<if test="batchId != null" >
+	    		and batch_id = #{batchId}
+	    			</if>
+	    			<if test="answerSheetItemId != null" >
+	    		and answer_sheet_item_id = #{answerSheetItemId}
+	    			</if>
+	    			<if test="sheetId != null" >
+	    		and sheet_id = #{sheetId}
+	    			</if>
+	    			<if test="fetchTime != null" >
+	    		and fetch_time = #{fetchTime}
+	    			</if>
+	    			<if test="markerId != null" >
+	    		and marker_id = #{markerId}
+	    			</if>
+	    			<if test="markerName != null" >
+	    		and marker_name = #{markerName}
+	    			</if>
+	    			<if test="handleTime != null" >
+	    		and handle_time = #{handleTime}
+	    			</if>
+	    			<if test="cryptCode != null" >
+	    		and crypt_code = #{cryptCode}
+	    			</if>
+	    			<if test="score != null" >
+	    		and score = #{score}
+	    			</if>
+	    			<if test="scores != null" >
+	    		and scores = #{scores}
+	    			</if>
+	    			<if test="optional != null" >
+	    		and optional = #{optional}
+	    			</if>
+	    			<if test="doubt != null" >
+	    		and doubt = #{doubt}
+	    			</if>
+	    			<if test="doubtDone != null" >
+	    		and doubt_done = #{doubtDone}
+	    			</if>
+	    			<if test="isDel != null" >
+	    		and is_del = #{isDel}
+	    			</if>
+    		</where>
+    	</select>
+</mapper>

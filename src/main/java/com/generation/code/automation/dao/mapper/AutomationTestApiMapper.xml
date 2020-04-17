@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.generation.code.automation.dao.AutomationTestApiDAO">
+		<resultMap type="com.generation.code.automation.vo.AutomationTestApiVO" id="AutomationTestApiMap">
+					<result column="module_code" property="moduleCode" jdbcType="VARCHAR" />
+					<result column="api_code" property="apiCode" jdbcType="VARCHAR" />
+					<result column="api_name" property="apiName" jdbcType="VARCHAR" />
+					<result column="api_url" property="apiUrl" jdbcType="VARCHAR" />
+					<result column="api_method" property="apiMethod" jdbcType="VARCHAR" />
+					<result column="api_header" property="apiHeader" jdbcType="VARCHAR" />
+					<result column="api_application" property="apiApplication" jdbcType="VARCHAR" />
+					<result column="api_status" property="apiStatus" jdbcType="VARCHAR" />
+					<result column="api_succeed_code" property="apiSucceedCode" jdbcType="VARCHAR" />
+					<result column="api_discern_result_attr" property="apiDiscernResultAttr" jdbcType="VARCHAR" />
+		</resultMap>
+		<!-- 新增 -->
+    	<insert id="insertAutomationTestApi" parameterType="com.generation.code.automation.vo.AutomationTestApiVO">
+    		insert into automation_test_api(
+    					module_code,
+    					api_code,
+    					api_name,
+    					api_url,
+    					api_method,
+    					api_header,
+    					api_application,
+    					api_status,
+    					api_succeed_code,
+    					api_discern_result_attr
+    		)values(
+    					#{moduleCode},
+    					#{apiCode},
+    					#{apiName},
+    					#{apiUrl},
+    					#{apiMethod},
+    					#{apiHeader},
+    					#{apiApplication},
+    					#{apiStatus},
+    					#{apiSucceedCode},
+    					#{apiDiscernResultAttr}
+    		)
+    	</insert>
+    	<!-- 删除 -->
+    	<delete id="deleteAutomationTestApi" parameterType="com.generation.code.automation.vo.AutomationTestApiVO">
+    		delete from automation_test_api
+    		<where>
+	    			<if test="moduleCode != null" >
+	    				and module_code = #{moduleCode},
+	    			</if>
+	    			<if test="apiCode != null" >
+	    				and api_code = #{apiCode},
+	    			</if>
+	    			<if test="apiName != null" >
+	    				and api_name = #{apiName},
+	    			</if>
+	    			<if test="apiUrl != null" >
+	    				and api_url = #{apiUrl},
+	    			</if>
+	    			<if test="apiMethod != null" >
+	    				and api_method = #{apiMethod},
+	    			</if>
+	    			<if test="apiHeader != null" >
+	    				and api_header = #{apiHeader},
+	    			</if>
+	    			<if test="apiApplication != null" >
+	    				and api_application = #{apiApplication},
+	    			</if>
+	    			<if test="apiStatus != null" >
+	    				and api_status = #{apiStatus},
+	    			</if>
+	    			<if test="apiSucceedCode != null" >
+	    				and api_succeed_code = #{apiSucceedCode},
+	    			</if>
+	    			<if test="apiDiscernResultAttr != null" >
+	    				and api_discern_result_attr = #{apiDiscernResultAttr},
+	    			</if>
+    		</where>
+    	</delete>
+    	<!-- 更新 -->
+    	<update id="updateAutomationTestApi" parameterType="com.generation.code.automation.vo.AutomationTestApiVO">
+    		update automation_test_api
+    		<set>
+	    			<if test="moduleCode != null" >
+	    				module_code = #{moduleCode},
+	    			</if>
+	    			<if test="apiCode != null" >
+	    				api_code = #{apiCode},
+	    			</if>
+	    			<if test="apiName != null" >
+	    				api_name = #{apiName},
+	    			</if>
+	    			<if test="apiUrl != null" >
+	    				api_url = #{apiUrl},
+	    			</if>
+	    			<if test="apiMethod != null" >
+	    				api_method = #{apiMethod},
+	    			</if>
+	    			<if test="apiHeader != null" >
+	    				api_header = #{apiHeader},
+	    			</if>
+	    			<if test="apiApplication != null" >
+	    				api_application = #{apiApplication},
+	    			</if>
+	    			<if test="apiStatus != null" >
+	    				api_status = #{apiStatus},
+	    			</if>
+	    			<if test="apiSucceedCode != null" >
+	    				api_succeed_code = #{apiSucceedCode},
+	    			</if>
+	    			<if test="apiDiscernResultAttr != null" >
+	    				api_discern_result_attr = #{apiDiscernResultAttr},
+	    			</if>
+    		</set>
+    		<where>
+	    			<if test="moduleCode != null" >
+	    				and module_code = #{moduleCode},
+	    			</if>
+	    			<if test="apiCode != null" >
+	    				and api_code = #{apiCode},
+	    			</if>
+	    			<if test="apiName != null" >
+	    				and api_name = #{apiName},
+	    			</if>
+	    			<if test="apiUrl != null" >
+	    				and api_url = #{apiUrl},
+	    			</if>
+	    			<if test="apiMethod != null" >
+	    				and api_method = #{apiMethod},
+	    			</if>
+	    			<if test="apiHeader != null" >
+	    				and api_header = #{apiHeader},
+	    			</if>
+	    			<if test="apiApplication != null" >
+	    				and api_application = #{apiApplication},
+	    			</if>
+	    			<if test="apiStatus != null" >
+	    				and api_status = #{apiStatus},
+	    			</if>
+	    			<if test="apiSucceedCode != null" >
+	    				and api_succeed_code = #{apiSucceedCode},
+	    			</if>
+	    			<if test="apiDiscernResultAttr != null" >
+	    				and api_discern_result_attr = #{apiDiscernResultAttr},
+	    			</if>
+    		</where>
+    	</update>
+    	<!-- 查询列表 -->
+    	<select id="listAutomationTestApi" parameterType="com.generation.code.automation.vo.AutomationTestApiVO" resultMap="AutomationTestApiMap">
+    		select * from automation_test_api
+    		<where>
+	    			<if test="moduleCode != null" >
+	    				and module_code = #{moduleCode}
+	    			</if>
+	    			<if test="apiCode != null" >
+	    				and api_code = #{apiCode}
+	    			</if>
+	    			<if test="apiName != null" >
+	    				and api_name = #{apiName}
+	    			</if>
+	    			<if test="apiUrl != null" >
+	    				and api_url = #{apiUrl}
+	    			</if>
+	    			<if test="apiMethod != null" >
+	    				and api_method = #{apiMethod}
+	    			</if>
+	    			<if test="apiHeader != null" >
+	    				and api_header = #{apiHeader}
+	    			</if>
+	    			<if test="apiApplication != null" >
+	    				and api_application = #{apiApplication}
+	    			</if>
+	    			<if test="apiStatus != null" >
+	    				and api_status = #{apiStatus}
+	    			</if>
+	    			<if test="apiSucceedCode != null" >
+	    				and api_succeed_code = #{apiSucceedCode}
+	    			</if>
+	    			<if test="apiDiscernResultAttr != null" >
+	    				and api_discern_result_attr = #{apiDiscernResultAttr}
+	    			</if>
+    		</where>
+    	</select>
+</mapper>

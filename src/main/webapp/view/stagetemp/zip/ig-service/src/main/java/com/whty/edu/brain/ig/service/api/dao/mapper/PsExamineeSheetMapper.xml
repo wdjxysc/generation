@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whty.edu.brain.ig.service.api.dao.PsExamineeSheetDAO">
+		<resultMap type="com.whty.edu.brain.ig.service.api.vo.PsExamineeSheetVO" id="PsExamineeSheetMap">
+			<result column="id" property="id" jdbcType="BIGINT" />
+			<result column="sheet_id" property="sheetId" jdbcType="VARCHAR" />
+			<result column="answer_sheet_id" property="answerSheetId" jdbcType="VARCHAR" />
+			<result column="exam_id" property="examId" jdbcType="VARCHAR" />
+			<result column="batch_id" property="batchId" jdbcType="VARCHAR" />
+			<result column="sheet_key" property="sheetKey" jdbcType="VARCHAR" />
+			<result column="catagory" property="catagory" jdbcType="VARCHAR" />
+			<result column="origin" property="origin" jdbcType="VARCHAR" />
+			<result column="exam_number" property="examNumber" jdbcType="VARCHAR" />
+			<result column="seq" property="seq" jdbcType="BIGINT" />
+			<result column="crypt_code" property="cryptCode" jdbcType="VARCHAR" />
+			<result column="analysisable" property="analysisable" jdbcType="TINYINT" />
+			<result column="scoredable" property="scoredable" jdbcType="TINYINT" />
+			<result column="markable" property="markable" jdbcType="TINYINT" />
+			<result column="score" property="score" jdbcType="FLOAT" />
+			<result column="kg_score" property="kgScore" jdbcType="FLOAT" />
+			<result column="zg_score" property="zgScore" jdbcType="FLOAT" />
+			<result column="attended" property="attended" jdbcType="TINYINT" />
+			<result column="cutSeq" property="cutSeq" jdbcType="SMALLINT" />
+			<result column="fetch_time" property="fetchTime" jdbcType="TIMESTAMP" />
+			<result column="marker_id" property="markerId" jdbcType="VARCHAR" />
+			<result column="marker_name" property="markerName" jdbcType="VARCHAR" />
+			<result column="handle_time" property="handleTime" jdbcType="TIMESTAMP" />
+			<result column="doubt" property="doubt" jdbcType="TINYINT" />
+			<result column="doubt_done" property="doubtDone" jdbcType="TINYINT" />
+			<result column="is_del" property="isDel" jdbcType="TINYINT" />
+			<result column="answer_time" property="answerTime" jdbcType="BIGINT" />
+			<result column="cost_time" property="costTime" jdbcType="BIGINT" />
+			<result column="submit_later" property="submitLater" jdbcType="TINYINT" />
+			<result column="correct_rate" property="correctRate" jdbcType="VARCHAR" />
+		</resultMap>
+		<!-- 新增 -->
+    	<insert id="insertPsExamineeSheet" parameterType="com.whty.edu.brain.ig.service.api.vo.PsExamineeSheetVO">
+    		insert into ps_examinee_sheet(
+    			id,
+    			sheet_id,
+    			answer_sheet_id,
+    			exam_id,
+    			batch_id,
+    			sheet_key,
+    			catagory,
+    			origin,
+    			exam_number,
+    			seq,
+    			crypt_code,
+    			analysisable,
+    			scoredable,
+    			markable,
+    			score,
+    			kg_score,
+    			zg_score,
+    			attended,
+    			cutSeq,
+    			fetch_time,
+    			marker_id,
+    			marker_name,
+    			handle_time,
+    			doubt,
+    			doubt_done,
+    			is_del,
+    			answer_time,
+    			cost_time,
+    			submit_later,
+    			correct_rate
+    		)values(
+    			#{id},
+    			#{sheetId},
+    			#{answerSheetId},
+    			#{examId},
+    			#{batchId},
+    			#{sheetKey},
+    			#{catagory},
+    			#{origin},
+    			#{examNumber},
+    			#{seq},
+    			#{cryptCode},
+    			#{analysisable},
+    			#{scoredable},
+    			#{markable},
+    			#{score},
+    			#{kgScore},
+    			#{zgScore},
+    			#{attended},
+    			#{cutSeq},
+    			#{fetchTime},
+    			#{markerId},
+    			#{markerName},
+    			#{handleTime},
+    			#{doubt},
+    			#{doubtDone},
+    			#{isDel},
+    			#{answerTime},
+    			#{costTime},
+    			#{submitLater},
+    			#{correctRate}
+    		)
+    	</insert>
+    	<!-- 删除 -->
+    	<delete id="deletePsExamineeSheet" parameterType="com.whty.edu.brain.ig.service.api.vo.PsExamineeSheetVO">
+    		delete from ps_examinee_sheet
+    		<where>
+	    			<if test="id != null" >
+	    		and id = #{id}
+	    			</if>
+	    			<if test="sheetId != null" >
+	    		and sheet_id = #{sheetId}
+	    			</if>
+	    			<if test="answerSheetId != null" >
+	    		and answer_sheet_id = #{answerSheetId}
+	    			</if>
+	    			<if test="examId != null" >
+	    		and exam_id = #{examId}
+	    			</if>
+	    			<if test="batchId != null" >
+	    		and batch_id = #{batchId}
+	    			</if>
+	    			<if test="sheetKey != null" >
+	    		and sheet_key = #{sheetKey}
+	    			</if>
+	    			<if test="catagory != null" >
+	    		and catagory = #{catagory}
+	    			</if>
+	    			<if test="origin != null" >
+	    		and origin = #{origin}
+	    			</if>
+	    			<if test="examNumber != null" >
+	    		and exam_number = #{examNumber}
+	    			</if>
+	    			<if test="seq != null" >
+	    		and seq = #{seq}
+	    			</if>
+	    			<if test="cryptCode != null" >
+	    		and crypt_code = #{cryptCode}
+	    			</if>
+	    			<if test="analysisable != null" >
+	    		and analysisable = #{analysisable}
+	    			</if>
+	    			<if test="scoredable != null" >
+	    		and scoredable = #{scoredable}
+	    			</if>
+	    			<if test="markable != null" >
+	    		and markable = #{markable}
+	    			</if>
+	    			<if test="score != null" >
+	    		and score = #{score}
+	    			</if>
+	    			<if test="kgScore != null" >
+	    		and kg_score = #{kgScore}
+	    			</if>
+	    			<if test="zgScore != null" >
+	    		and zg_score = #{zgScore}
+	    			</if>
+	    			<if test="attended != null" >
+	    		and attended = #{attended}
+	    			</if>
+	    			<if test="cutSeq != null" >
+	    		and cutSeq = #{cutSeq}
+	    			</if>
+	    			<if test="fetchTime != null" >
+	    		and fetch_time = #{fetchTime}
+	    			</if>
+	    			<if test="markerId != null" >
+	    		and marker_id = #{markerId}
+	    			</if>
+	    			<if test="markerName != null" >
+	    		and marker_name = #{markerName}
+	    			</if>
+	    			<if test="handleTime != null" >
+	    		and handle_time = #{handleTime}
+	    			</if>
+	    			<if test="doubt != null" >
+	    		and doubt = #{doubt}
+	    			</if>
+	    			<if test="doubtDone != null" >
+	    		and doubt_done = #{doubtDone}
+	    			</if>
+	    			<if test="isDel != null" >
+	    		and is_del = #{isDel}
+	    			</if>
+	    			<if test="answerTime != null" >
+	    		and answer_time = #{answerTime}
+	    			</if>
+	    			<if test="costTime != null" >
+	    		and cost_time = #{costTime}
+	    			</if>
+	    			<if test="submitLater != null" >
+	    		and submit_later = #{submitLater}
+	    			</if>
+	    			<if test="correctRate != null" >
+	    		and correct_rate = #{correctRate}
+	    			</if>
+    		</where>
+    	</delete>
+    	<!-- 更新 -->
+    	<update id="updatePsExamineeSheet" parameterType="com.whty.edu.brain.ig.service.api.vo.PsExamineeSheetVO">
+    		update ps_examinee_sheet
+    		<set>
+	    			<if test="id != null" >
+	    		id = #{id},
+	    			</if>
+	    			<if test="sheetId != null" >
+	    		sheet_id = #{sheetId},
+	    			</if>
+	    			<if test="answerSheetId != null" >
+	    		answer_sheet_id = #{answerSheetId},
+	    			</if>
+	    			<if test="examId != null" >
+	    		exam_id = #{examId},
+	    			</if>
+	    			<if test="batchId != null" >
+	    		batch_id = #{batchId},
+	    			</if>
+	    			<if test="sheetKey != null" >
+	    		sheet_key = #{sheetKey},
+	    			</if>
+	    			<if test="catagory != null" >
+	    		catagory = #{catagory},
+	    			</if>
+	    			<if test="origin != null" >
+	    		origin = #{origin},
+	    			</if>
+	    			<if test="examNumber != null" >
+	    		exam_number = #{examNumber},
+	    			</if>
+	    			<if test="seq != null" >
+	    		seq = #{seq},
+	    			</if>
+	    			<if test="cryptCode != null" >
+	    		crypt_code = #{cryptCode},
+	    			</if>
+	    			<if test="analysisable != null" >
+	    		analysisable = #{analysisable},
+	    			</if>
+	    			<if test="scoredable != null" >
+	    		scoredable = #{scoredable},
+	    			</if>
+	    			<if test="markable != null" >
+	    		markable = #{markable},
+	    			</if>
+	    			<if test="score != null" >
+	    		score = #{score},
+	    			</if>
+	    			<if test="kgScore != null" >
+	    		kg_score = #{kgScore},
+	    			</if>
+	    			<if test="zgScore != null" >
+	    		zg_score = #{zgScore},
+	    			</if>
+	    			<if test="attended != null" >
+	    		attended = #{attended},
+	    			</if>
+	    			<if test="cutSeq != null" >
+	    		cutSeq = #{cutSeq},
+	    			</if>
+	    			<if test="fetchTime != null" >
+	    		fetch_time = #{fetchTime},
+	    			</if>
+	    			<if test="markerId != null" >
+	    		marker_id = #{markerId},
+	    			</if>
+	    			<if test="markerName != null" >
+	    		marker_name = #{markerName},
+	    			</if>
+	    			<if test="handleTime != null" >
+	    		handle_time = #{handleTime},
+	    			</if>
+	    			<if test="doubt != null" >
+	    		doubt = #{doubt},
+	    			</if>
+	    			<if test="doubtDone != null" >
+	    		doubt_done = #{doubtDone},
+	    			</if>
+	    			<if test="isDel != null" >
+	    		is_del = #{isDel},
+	    			</if>
+	    			<if test="answerTime != null" >
+	    		answer_time = #{answerTime},
+	    			</if>
+	    			<if test="costTime != null" >
+	    		cost_time = #{costTime},
+	    			</if>
+	    			<if test="submitLater != null" >
+	    		submit_later = #{submitLater},
+	    			</if>
+	    			<if test="correctRate != null" >
+	    		correct_rate = #{correctRate},
+	    			</if>
+    		</set>
+    		<where>
+	    			<if test="id != null" >
+	    		and id = #{id}
+	    			</if>
+	    			<if test="sheetId != null" >
+	    		and sheet_id = #{sheetId}
+	    			</if>
+	    			<if test="answerSheetId != null" >
+	    		and answer_sheet_id = #{answerSheetId}
+	    			</if>
+	    			<if test="examId != null" >
+	    		and exam_id = #{examId}
+	    			</if>
+	    			<if test="batchId != null" >
+	    		and batch_id = #{batchId}
+	    			</if>
+	    			<if test="sheetKey != null" >
+	    		and sheet_key = #{sheetKey}
+	    			</if>
+	    			<if test="catagory != null" >
+	    		and catagory = #{catagory}
+	    			</if>
+	    			<if test="origin != null" >
+	    		and origin = #{origin}
+	    			</if>
+	    			<if test="examNumber != null" >
+	    		and exam_number = #{examNumber}
+	    			</if>
+	    			<if test="seq != null" >
+	    		and seq = #{seq}
+	    			</if>
+	    			<if test="cryptCode != null" >
+	    		and crypt_code = #{cryptCode}
+	    			</if>
+	    			<if test="analysisable != null" >
+	    		and analysisable = #{analysisable}
+	    			</if>
+	    			<if test="scoredable != null" >
+	    		and scoredable = #{scoredable}
+	    			</if>
+	    			<if test="markable != null" >
+	    		and markable = #{markable}
+	    			</if>
+	    			<if test="score != null" >
+	    		and score = #{score}
+	    			</if>
+	    			<if test="kgScore != null" >
+	    		and kg_score = #{kgScore}
+	    			</if>
+	    			<if test="zgScore != null" >
+	    		and zg_score = #{zgScore}
+	    			</if>
+	    			<if test="attended != null" >
+	    		and attended = #{attended}
+	    			</if>
+	    			<if test="cutSeq != null" >
+	    		and cutSeq = #{cutSeq}
+	    			</if>
+	    			<if test="fetchTime != null" >
+	    		and fetch_time = #{fetchTime}
+	    			</if>
+	    			<if test="markerId != null" >
+	    		and marker_id = #{markerId}
+	    			</if>
+	    			<if test="markerName != null" >
+	    		and marker_name = #{markerName}
+	    			</if>
+	    			<if test="handleTime != null" >
+	    		and handle_time = #{handleTime}
+	    			</if>
+	    			<if test="doubt != null" >
+	    		and doubt = #{doubt}
+	    			</if>
+	    			<if test="doubtDone != null" >
+	    		and doubt_done = #{doubtDone}
+	    			</if>
+	    			<if test="isDel != null" >
+	    		and is_del = #{isDel}
+	    			</if>
+	    			<if test="answerTime != null" >
+	    		and answer_time = #{answerTime}
+	    			</if>
+	    			<if test="costTime != null" >
+	    		and cost_time = #{costTime}
+	    			</if>
+	    			<if test="submitLater != null" >
+	    		and submit_later = #{submitLater}
+	    			</if>
+	    			<if test="correctRate != null" >
+	    		and correct_rate = #{correctRate}
+	    			</if>
+    		</where>
+    	</update>
+    	<!-- 查询列表 -->
+    	<select id="listPsExamineeSheet" parameterType="com.whty.edu.brain.ig.service.api.vo.PsExamineeSheetVO" resultMap="PsExamineeSheetMap">
+    		select * from ps_examinee_sheet
+    		<where>
+	    			<if test="id != null" >
+	    		and id = #{id}
+	    			</if>
+	    			<if test="sheetId != null" >
+	    		and sheet_id = #{sheetId}
+	    			</if>
+	    			<if test="answerSheetId != null" >
+	    		and answer_sheet_id = #{answerSheetId}
+	    			</if>
+	    			<if test="examId != null" >
+	    		and exam_id = #{examId}
+	    			</if>
+	    			<if test="batchId != null" >
+	    		and batch_id = #{batchId}
+	    			</if>
+	    			<if test="sheetKey != null" >
+	    		and sheet_key = #{sheetKey}
+	    			</if>
+	    			<if test="catagory != null" >
+	    		and catagory = #{catagory}
+	    			</if>
+	    			<if test="origin != null" >
+	    		and origin = #{origin}
+	    			</if>
+	    			<if test="examNumber != null" >
+	    		and exam_number = #{examNumber}
+	    			</if>
+	    			<if test="seq != null" >
+	    		and seq = #{seq}
+	    			</if>
+	    			<if test="cryptCode != null" >
+	    		and crypt_code = #{cryptCode}
+	    			</if>
+	    			<if test="analysisable != null" >
+	    		and analysisable = #{analysisable}
+	    			</if>
+	    			<if test="scoredable != null" >
+	    		and scoredable = #{scoredable}
+	    			</if>
+	    			<if test="markable != null" >
+	    		and markable = #{markable}
+	    			</if>
+	    			<if test="score != null" >
+	    		and score = #{score}
+	    			</if>
+	    			<if test="kgScore != null" >
+	    		and kg_score = #{kgScore}
+	    			</if>
+	    			<if test="zgScore != null" >
+	    		and zg_score = #{zgScore}
+	    			</if>
+	    			<if test="attended != null" >
+	    		and attended = #{attended}
+	    			</if>
+	    			<if test="cutSeq != null" >
+	    		and cutSeq = #{cutSeq}
+	    			</if>
+	    			<if test="fetchTime != null" >
+	    		and fetch_time = #{fetchTime}
+	    			</if>
+	    			<if test="markerId != null" >
+	    		and marker_id = #{markerId}
+	    			</if>
+	    			<if test="markerName != null" >
+	    		and marker_name = #{markerName}
+	    			</if>
+	    			<if test="handleTime != null" >
+	    		and handle_time = #{handleTime}
+	    			</if>
+	    			<if test="doubt != null" >
+	    		and doubt = #{doubt}
+	    			</if>
+	    			<if test="doubtDone != null" >
+	    		and doubt_done = #{doubtDone}
+	    			</if>
+	    			<if test="isDel != null" >
+	    		and is_del = #{isDel}
+	    			</if>
+	    			<if test="answerTime != null" >
+	    		and answer_time = #{answerTime}
+	    			</if>
+	    			<if test="costTime != null" >
+	    		and cost_time = #{costTime}
+	    			</if>
+	    			<if test="submitLater != null" >
+	    		and submit_later = #{submitLater}
+	    			</if>
+	    			<if test="correctRate != null" >
+	    		and correct_rate = #{correctRate}
+	    			</if>
+    		</where>
+    	</select>
+</mapper>

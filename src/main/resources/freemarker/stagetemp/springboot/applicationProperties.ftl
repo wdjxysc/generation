@@ -1,0 +1,12 @@
+server.port=9003
+spring.mvc.view.prefix=/view/
+spring.mvc.view.suffix=.html
+spring.datasource.url=${dburl}  
+spring.datasource.username=${dbusername}
+spring.datasource.password=${dbpassword}
+spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+spring.datasource.type=com.alibaba.druid.pool.DruidDataSource
+mybatis.config-location=classpath:mybatis-config.xml
+spring.profiles.active=dev
+logging.level.org.springframework.boot.autoconfigure=ERROR
+mybatis.mapper-locations=${mapperDir}

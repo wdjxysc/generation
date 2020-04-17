@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>脚手架</title>
+<link rel="stylesheet" href="/view/statics/layui/css/layui.css">
+<script src="/view/statics/layui/lay/modules/form.js"></script>
+<script src="/view/statics/js/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+	<form class="layui-form stageform" action="">
+		<div class="layui-card">
+			<div class="layui-card-header">基础信息</div>
+			<div class="layui-card-body">
+				<div class="layui-form-item">
+					<label class="layui-form-label">项目类型</label>
+					<div class="layui-input-block">
+						<select name="projectType">
+						  <option value="">请选择</option>
+						  <option value="springboot">SpringBoot</option>
+						  <option value="springmvc">SpringMvc</option>
+						</select>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">JDK版本</label>
+					<div class="layui-input-block">
+						<select name="jdkVersion">
+						  <option value="">请选择</option>
+						  <option value="1.8">1.8</option>
+						  <option value="1.9">1.9</option>
+						</select>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">GroupId</label>
+					<div class="layui-input-block">
+						<input type="text" name="groupId"
+							placeholder="com.demo" class="layui-input"
+							value="">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">ArtifactId</label>
+					<div class="layui-input-block">
+						<input type="text" name="artifactId"
+							placeholder="artifactId" class="layui-input"
+							value="">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">项目名</label>
+					<div class="layui-input-block">
+						<input type="text" name="projectName"
+							placeholder="项目名" class="layui-input"
+							value="">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">打包方式</label>
+					<div class="layui-input-block">
+						<select name="packtype" lay-verify="">
+						  <option value="">请选择</option>
+						  <option value="jar">jar</option>
+						  <option value="war">war</option>
+						</select>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">包路径</label>
+					<div class="layui-input-block">
+						<input type="text" name="packgeName"
+							placeholder="com.generation.demo" class="layui-input"
+							value="">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">容器</label>
+					<div class="layui-input-block">
+						<select name="container">
+						  <option value="in_tomcat">内置tomcat容器</option>
+						  <option value="out_tomcat">依赖外部tomcat容器</option>
+						  <option value="in_jetty">jetty内置容器</option>
+						</select>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">生成javabean</label>
+					<div class="layui-input-block">
+						<input type="checkbox" name="generateJavaBean" lay-filter="generateJavaBean" lay-skin="switch">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">生成增删改查</label>
+					<div class="layui-input-block">
+						<input type="checkbox" name="generateDML" lay-filter="generateDML" lay-skin="switch">
+					</div>
+				</div>
+				<div style="padding: 20px; background-color: #F2F2F2;">
+					<div class="layui-row layui-col-space15">
+						<div class="layui-col-md6">
+					      <div class="layui-card">
+					        <div class="layui-card-header">后缀设置</div>
+					        <div class="layui-card-body">
+					        <div class="layui-form-item">
+								<label class="layui-form-label">Demo</label>
+								<div class="layui-input-block">
+									<input type="text" name="vo" placeholder="VO" class="layui-input" value="VO">
+								</div>
+							</div>
+							<div class="layui-form-item">
+								<label class="layui-form-label">Demo</label>
+								<div class="layui-input-block">
+									<input type="text" name="controller" placeholder="Controller" class="layui-input" value="Controller">
+								</div>
+							</div>
+							<div class="layui-form-item">
+								<label class="layui-form-label">Demo</label>
+								<div class="layui-input-block">
+									<input type="text" name="dao" placeholder="DAO" class="layui-input" value="DAO">
+								</div>
+							</div>
+							<div class="layui-form-item">
+								<label class="layui-form-label">Demo</label>
+								<div class="layui-input-block">
+									<input type="text" name="mapper" placeholder="Mapper" class="layui-input" value="Mapper">
+								</div>
+							</div>
+							<div class="layui-form-item">
+								<label class="layui-form-label">Demo</label>
+								<div class="layui-input-block">
+									<input type="text" name="service" placeholder="Service" class="layui-input" value="Service">
+								</div>
+							</div>
+							<div class="layui-form-item">
+								<label class="layui-form-label">Demo</label>
+								<div class="layui-input-block">
+									<input type="text" name="serviceimpl" placeholder="ServiceImpl" class="layui-input" value="ServiceImpl">
+								</div>
+							</div>
+					        </div>
+					      </div>
+					    </div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<hr class="layui-bg-orange">
+		<div class="layui-card">
+		  <div class="layui-card-header">数据库配置</div>
+		  <div class="layui-card-body">
+		    <div class="layui-form-item">
+			    <label class="layui-form-label">连接</label>
+			    <div class="layui-input-block"> 
+			      <input type="text" name="dburl"  placeholder="jdbc:mysql://127.0.0.1:3306/generation?characterEncoding=UTF-8&useSSL=false"  class="layui-input" value="">
+			    </div>
+			  </div>
+			  <div class="layui-form-item">
+			    <label class="layui-form-label">用户名</label>
+			    <div class="layui-input-block">
+			      <input type="text" name="username" placeholder="root" value=""  class="layui-input">
+			    </div>
+			  </div>
+			  <div class="layui-form-item">
+			    <label class="layui-form-label">密码</label>
+			    <div class="layui-input-inline">
+			      <input type="password" name="password" placeholder="请输入密码" value=""  class="layui-input">
+			    </div>
+			  </div>
+			  <div class="layui-form-item">
+			    <label class="layui-form-label">驱动</label>
+			    <div class="layui-input-block">
+			      <select name="dbdriver">
+			        <option value=""></option>
+			        <option value="mysql">MySql</option>
+			        <option value="oracle">Oracle</option>
+			      </select>
+			    </div>
+			  </div>
+			  <div class="layui-form-item">
+			    <label class="layui-form-label">日志路径</label>
+			    <div class="layui-input-block">
+			      <input type="text" name="logdir" placeholder="D:/${artifactId}/" value=""  class="layui-input">
+			    </div>
+			  </div>
+			  <div class="layui-form-item">
+			    <div class="layui-input-block">
+			      <button type="button" class="layui-btn testdbconnect">连接测试</button>
+			    </div>
+			  </div>
+			  <div class="dbconfig" style="display:none">
+			  <div class="layui-form-item">
+			    <label class="layui-form-label">包名</label>
+			    <div class="layui-input-block">
+			      <input type="text" name="beanpackge" placeholder="" value=""  class="layui-input">
+			    </div>
+			  </div>
+			  <div class="layui-form-item">
+			    <label class="layui-form-label">表名范围</label>
+			    <div class="layui-input-inline" style="width:500px">
+			      <input type="text" name="searchtb"  placeholder="输入表名，模糊查询"  class="layui-input" value="">
+			    </div>
+			    <div class="layui-input-inline " style="width: 90px">
+				    <button type="button" class="layui-btn" id="searchTables">
+				        <i class="layui-icon" style="font-size: 20px; "></i> 搜索
+				    </button>
+				</div>
+				<div class="layui-form-mid layui-word-aux">用于生成JavaBean/增删改查</div>
+			  </div>
+			  <blockquote class="layui-elem-quote">查询结果 <input type="checkbox" name="" class="stageformckall" lay-filter="ckall" title="全选" lay-skin="primary"></blockquote>
+			  <blockquote class="layui-elem-quote layui-quote-nm querytables">
+			  	暂无内容
+			  </blockquote>
+			  </div>
+		  </div>
+		</div>
+		<hr class="layui-bg-orange">
+		<div class="layui-card">
+		  <div class="layui-card-header">插件</div>
+		  <div class="layui-card-body">
+		    <input type="checkbox" class="plugin" name="plugin" title="redis">
+			<input type="checkbox" class="plugin" name="plugin" title="shiro"> 
+			<input type="checkbox" class="plugin" name="plugin" title="pagehelper">
+			<input type="checkbox" class="plugin" name="plugin" title="verify">
+			<input type="checkbox" class="plugin" name="plugin" title="swagger">  
+		  </div>
+		</div>
+		<hr class="layui-bg-orange">
+		<div class="layui-card">
+		  <div class="layui-card-header">初始化工具类</div>
+		  <div class="layui-card-body">
+		    <input type="checkbox" class="util" name="util" title="word">
+			<input type="checkbox" class="util" name="util" title="excel"> 
+			<input type="checkbox" class="util" name="util" title="img">
+			<input type="checkbox" class="util" name="util" title="zip">
+			<input type="checkbox" class="util" name="util" title="mail">  
+		  </div>
+		</div>
+		<hr class="layui-bg-orange">
+		<div class="layui-card">
+		  <div class="layui-card-header">前端</div>
+		  <div class="layui-card-body">
+		  	<div class="layui-form-item">
+				<label class="layui-form-label">前后端分离</label>
+				<div class="layui-input-block">
+					<input type="checkbox" name="separate" lay-skin="switch">
+				</div>
+			</div>
+		    <div class="layui-form-item">
+					<label class="layui-form-label">页面格式</label>
+					<div class="layui-input-block">
+						<select name="frontEnd" lay-verify="">
+						  <option value="">请选择</option>
+						  <option value="jsp">jsp</option>
+						  <option value="thymeleaf">thymeleaf</option>
+						  <option value="html">html</option>
+						</select>
+					</div>
+				</div>
+				 <div class="layui-form-item">
+					<label class="layui-form-label">页面风格</label>
+					<div class="layui-input-block">
+						<select name="ui" lay-verify="">
+						  <option value="">请选择</option>
+						  <option value="layui">layui</option>
+						  <option value="mui">mui</option>
+						  <option value="sui">sui</option>
+						</select>
+					</div>
+				</div>
+		  </div>
+		</div>
+		<button type="button" class="layui-btn layui-btn-radius layui-btn-normal generationGo">搭建</button>
+	</form>
+	<script>
+	layui.use('form', function(){
+		var form = layui.form;
+		$(".stageform [name=dbdriver]").val("mysql");
+		$(".stageform [name=projectType]").val("springboot");
+		$(".stageform [name=packtype]").val("jar");
+		$(".stageform [name=container]").val("in_tomcat");
+		$(".stageform [name=frontEnd]").val("jsp");
+		$(".stageform [name=ui]").val("layui");
+		$(".stageform [name=jdkVersion]").val("1.8");
+		form.render();
+		form.on('switch(generateJavaBean)', function(obj){
+			if(obj.elem.checked){
+				$(".dbconfig").show()
+				$("[name=generateJavaBean]").addClass("on");
+			}else{
+				if(!$("[name=generateDML]").hasClass("on")){
+					$(".dbconfig").hide()
+				}
+				$("[name=generateJavaBean]").removeClass("on");
+			}
+		});
+		form.on('switch(generateDML)', function(obj){
+			if(obj.elem.checked){
+				$(".dbconfig").show()
+				$("[name=generateDML]").addClass("on");
+			}else{
+				if(!$("[name=generateJavaBean]").hasClass("on")){
+					$(".dbconfig").hide()
+				}
+				$("[name=generateDML]").removeClass("on");
+			}
+		});
+		form.on('checkbox(stageformckall)', function(data){
+			$(".stageform .cktbitem").each(function(){
+				  $(this).attr('checked', data.elem.checked);
+			  });
+			 form.render();
+		});
+		$(document).on('click', '.stageform #searchTables', function(){
+			var queryparams = getDataBaseConfig();
+			if(queryparams){
+				var searchtb = $(".stageform input[name=searchtb]").val();
+				if(null == searchtb || undefined == searchtb || searchtb.length < 1){
+					layer.msg('请填写查询关键字'); 
+					return;
+				}
+				queryparams["queryTableName"] = searchtb;
+				$.ajax({
+		        	url: '/dbreport/getDataBaseTables.do',
+		        	type: 'post',
+		        	data: queryparams,
+		        	dataType: "json",
+		        	async:false,
+		        	success: function (data) {
+		        		console.dir(data);
+		            	if (data.code == "200") {
+		            		dbtest = true;
+		            		var tables = data.data;
+		            		$(".stageform .querytables").html("");
+		            		for(var i = 0;i < tables.length;i ++){
+		            			$(".stageform .querytables").append('<input class="cktbitem" type="checkbox" name="" title="' + tables[i]["TABLE_NAME"] + '" lay-skin="primary">');
+		            		}
+		            		form.render("checkbox");
+		            		if(tables.length < 0){
+		            			$(".stageform .querytables").html("查无结果");
+		            		}
+		            	} else{
+		            		dbtest = false;
+		            		layer.msg('请求失败'); 
+		            	}
+		        	},
+		        	error: function () {
+		        		dbtest = false;
+		        		layer.msg('请求失败'); 
+		        	}
+		    	});
+			}
+		});
+	});
+	$(".stageform .testdbconnect").on('click', function(){
+		var queryparams = getDataBaseConfig();
+		if(queryparams){
+			$.ajax({
+	        	url: '/dbreport/testConnection.do',
+	        	type: 'post',
+	        	data: queryparams,
+	        	dataType: "json",
+	        	async:false,
+	        	success: function (data) {
+	            	if (data.code == "200") {
+	            		layer.msg('连接成功');
+	            		dbtest = true;
+	            	} else{
+	            		dbtest = false;
+	            		layer.msg('连接失败'); 
+	            	}
+	        	},
+	        	error: function () {
+	        		dbtest = false;
+	        		layer.msg('连接失败'); 
+	        	}
+	    	});
+		}
+	});
+	function getDataBaseConfig(){
+			var dburl = $(".stageform input[name=dburl]").val();
+		  if(null == dburl || undefined == dburl || dburl.length < 1){
+			  layer.msg('请输入数据库链接地址'); 
+			  return false;
+		  }
+		  var username = $(".stageform input[name=username]").val();
+		  if(null == username || undefined == username || username.length < 1){
+			  layer.msg('请输入用户名'); 
+			  return false;
+		  }
+		  var password = $(".stageform input[name=password]").val();
+		  if(null == password || undefined == password || password.length < 1){
+			  layer.msg('请输入密码'); 
+			  return false;
+		  }
+		  var dbdriver = $(".stageform [name=dbdriver]").val();
+		  if(null == dbdriver || undefined == dbdriver || dbdriver.length < 1){
+			  layer.msg('请选择驱动类型'); 
+			  return false;
+		  }
+		  var arr = dburl.split('?');
+		  arr = arr[0].split('/');
+		  var dbname = arr[arr.length - 1];
+		  var params = {
+			"dburl":dburl,
+			"username":username,
+			"password":password,
+			"dbdriver":dbdriver,
+			"dbname":dbname
+		  };
+		  return params;
+	}
+	$(".stageform .generationGo").on('click', createProject);
+	function createProject(){
+		var groupId = $(".stageform [name=groupId]").val();
+		if(isEmpty(groupId)){
+			layer.msg('groupId为空'); 
+			return;
+		}
+		var artifactId = $(".stageform [name=artifactId]").val();
+		if(isEmpty(artifactId)){
+			layer.msg('artifactId为空'); 
+			return;
+		}
+		var projectName = $(".stageform [name=projectName]").val();
+		if(isEmpty(projectName)){
+			layer.msg('项目名为空'); 
+			return;
+		}
+		var driver = $(".stageform [name=dbdriver]").val();
+		if(isEmpty(driver)){
+			layer.msg('数据库驱动为空'); 
+			return;
+		}
+		var projectType = $(".stageform [name=projectType]").val();
+		if(isEmpty(projectType)){
+			layer.msg('项目类型为空'); 
+			return;
+		}
+		var packgeName = $(".stageform [name=packgeName]").val();
+		if(isEmpty(packgeName)){
+			layer.msg('工程包名为空'); 
+			return;
+		}
+		var frontEnd = $(".stageform [name=frontEnd]").val();
+		if(isEmpty(frontEnd)){
+			layer.msg('前端类型为空'); 
+			return;
+		}
+		var ui = $(".stageform [name=ui]").val();
+		if(isEmpty(ui)){
+			layer.msg('前端UI为空'); 
+			return;
+		}
+		var dburl = $(".stageform input[name=dburl]").val();
+		if(isEmpty(dburl)){
+			layer.msg('数据库连接为空'); 
+			return;
+		}
+		var arr = dburl.split('?');
+		arr = arr[0].split('/');
+		var dbname = arr[arr.length - 1];
+		var jdkVersion = $(".stageform [name=jdkVersion]").val();
+		if(isEmpty(jdkVersion)){
+			layer.msg('未选择jdk版本'); 
+			return;
+		}
+		var container = $(".stageform [name=container]").val();
+		var packtype = $(".stageform [name=packtype]").val();
+		var logdir = $(".stageform [name=logdir]").val();
+		var dbusername = $(".stageform input[name=username]").val();
+		if(isEmpty(dbusername)){
+			layer.msg('数据库用户名为空'); 
+			return;
+		}
+		var dbpassword = $(".stageform [name=password]").val();
+		if(isEmpty(dbpassword)){
+			layer.msg('数据库密码为空'); 
+			return;
+		}
+		var javabean = $(".stageform [name=generateJavaBean]").hasClass("on") ? 1 : 0;
+		var dml = $(".stageform [name=generateDML]").hasClass("on") ? 1 : 0;
+		//
+		if($(".stageform [name=generateDML]").hasClass("on") || $(".stageform [name=generateJavaBean]").hasClass("on")){
+			if($(".stageform .cktbitem:checked").length < 1){
+				layer.msg('请勾选需生成代码的表'); 
+				return;
+			}
+		}
+		var generationTables = [];
+		$(".stageform .cktbitem:checked").each(function(i){
+			generationTables.push($(this).attr("title"));
+	    });
+		var pluginsString = [];
+		$(".stageform .plugin:checked").each(function(i){
+			pluginsString.push($(this).attr("title"));
+	    });
+		pluginsString = pluginsString.join();
+		var utilsString = [];
+		$(".stageform .util:checked").each(function(i){
+			utilsString.push($(this).attr("title"));
+	    });
+		utilsString = utilsString.join();
+		var beanpackge = $(".stageform [name=beanpackge]").val();
+		generationTables = generationTables.join();
+		var params = {
+				"groupId":groupId,
+				"artifactId":artifactId,
+				"projectName":projectName,
+				"driver":driver,
+				"projectType":projectType,
+				"packgeName":packgeName,
+				"frontEnd":frontEnd,
+				"ui":ui,
+				"dburl":dburl,
+				"dbname":dbname,
+				"jdkVersion":jdkVersion,
+				"container":container,
+				"packtype":packtype,
+				"logdir":logdir,
+				"dbusername":dbusername,
+				"dbpassword":dbpassword,
+				"javabean":javabean,
+				"dml":dml,
+				"generationTables":generationTables,
+				"beanpackge":beanpackge,
+				"pluginsString":pluginsString,
+				"utilsString":utilsString,
+				"staticSuffix":frontEnd == "jsp" ? "jsp" : "html"
+			};
+		$.ajax({
+        	url: '/stage/createProject.do',
+        	type: 'post',
+        	data: params,
+        	dataType: "json",
+        	async:false,
+        	success: function (data) {
+            	if (data.code == "200") {
+            		layer.msg('工程生成成功');
+            		setTimeout(function(){
+            			window.location.href = "/view/stagetemp/zip/" + data.desc;
+            		}, 100);
+            	} else{
+            		layer.msg('连接失败'); 
+            	}
+        	},
+        	error: function () {
+        		layer.msg('连接失败'); 
+        	}
+    	});
+	}
+	</script>
+</body>
+</html>

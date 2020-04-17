@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>工程脚手架</title>
+  <link rel="stylesheet" href="/view/statics/layui/css/layui.css">
+  <script src="/view/statics/layui/lay/modules/form.js"></script>
+  <script src="/view/statics/js/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+<form class="layui-form dbreportform" action="">
+  <div class="layui-form-item">
+    <label class="layui-form-label">连接</label>
+    <div class="layui-input-block">
+      <input type="text" name="dburl" required  placeholder="jdbc:mysql://127.0.0.1:3306/generation?characterEncoding=UTF-8&useSSL=false"  class="layui-input" value="">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">用户名</label>
+    <div class="layui-input-block">
+      <input type="text" name="username" required  placeholder="root" value=""  class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">密码</label>
+    <div class="layui-input-inline">
+      <input type="password" name="password" required placeholder="请输入密码" value=""  class="layui-input">
+    </div>
+    <!-- <div class="layui-form-mid layui-word-aux">辅助文字</div> -->
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">驱动</label>
+    <div class="layui-input-block">
+      <select name="dbdriver">
+        <option value=""></option>
+        <option value="mysql">MySql</option>
+        <option value="oracle">Oracle</option>
+      </select>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button type="button" class="layui-btn testdbconnect">连接测试</button>
+    </div>
+  </div>
+  <hr class="layui-bg-red">
+  
+  <div class="layui-form-item">
+    <label class="layui-form-label">表名范围</label>
+    <div class="layui-input-inline" style="width:500px">
+      <input type="text" name="searchtb"  placeholder="输入表名，模糊查询"  class="layui-input" value="">
+    </div>
+    <div class="layui-input-inline " style="width: 90px">
+	    <button type="button" class="layui-btn" id="searchTables">
+	        <i class="layui-icon" style="font-size: 20px; "></i> 搜索
+	    </button>
+	</div>
+  </div>
+  <blockquote class="layui-elem-quote">查询结果 <input type="checkbox" name="" class="dbreportformckall" lay-filter="ckall" title="全选" lay-skin="primary"></blockquote>
+  <blockquote class="layui-elem-quote layui-quote-nm querytables">
+  	暂无内容
+  </blockquote>
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button type="button" class="layui-btn printwords">确认</button>	
+      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+    </div>
+  </div>
+</form>
+ 
+<script>
+var dbtest = false;
+layui.use('form', function(){
+  var form = layui.form;
+  $(".dbreportform [name=dbdriver]").val("mysql");
+  form.render();
+  form.on('checkbox(dbreportformckall)', function(data){
+	  $(".dbreportform .cktbitem").each(function(){
+		  $(this).attr('checked', data.elem.checked);
+	  });
+	  form.render();
+	});  
+  $(document).on('click', '.dbreportform #searchTables', function(){
+		var queryparams = getDataBaseConfig();
+		if(queryparams){
+			var searchtb = $(".dbreportform input[name=searchtb]").val();
+			if(null == searchtb || undefined == searchtb || searchtb.length < 1){
+				layer.msg('请填写查询关键字'); 
+				return;
+			}
+			queryparams["queryTableName"] = searchtb;
+			$.ajax({
+	        	url: '/dbreport/getDataBaseTables.do',
+	        	type: 'post',
+	        	data: queryparams,
+	        	dataType: "json",
+	        	async:false,
+	        	success: function (data) {
+	        		console.dir(data);
+	            	if (data.code == "200") {
+	            		dbtest = true;
+	            		var tables = data.data;
+	            		$(".dbreportform .querytables").html("");
+	            		for(var i = 0;i < tables.length;i ++){
+	            			$(".dbreportform .querytables").append('<input class="cktbitem" type="checkbox" name="" title="' + tables[i]["TABLE_NAME"] + '" lay-skin="primary">');
+	            		}
+	            		form.render("checkbox");
+	            		if(tables.length < 0){
+	            			$(".dbreportform .querytables").html("查无结果");
+	            		}
+	            	} else{
+	            		dbtest = false;
+	            		layer.msg('请求失败'); 
+	            	}
+	        	},
+	        	error: function () {
+	        		dbtest = false;
+	        		layer.msg('请求失败'); 
+	        	}
+	    	});
+		}
+	});
+});
+$(".dbreportform .printwords").on('click', function(){
+	var queryparams = getDataBaseConfig();
+	var tables = [];
+	$(".dbreportform .cktbitem:checked").each(function(i){
+		tables.push($(this).attr("title"));
+    });
+	queryparams["tables"] = tables.join(); 
+	if(queryparams){
+		$.ajax({
+        	url: '/dbreport/reportTablesDoc.do',
+        	type: 'post',
+        	data: queryparams,
+        	dataType: "json",
+        	async:false,
+        	success: function (data) {
+            	if (data.code == "200") {
+            		layer.msg('文档生成成功');
+            		setTimeout(function(){
+            			window.location.href = data.desc;
+            		}, 100);
+            		dbtest = true;
+            	} else{
+            		dbtest = false;
+            		layer.msg('连接失败'); 
+            	}
+        	},
+        	error: function () {
+        		dbtest = false;
+        		layer.msg('连接失败'); 
+        	}
+    	});
+	}
+});
+$(".dbreportform .testdbconnect").on('click', function(){
+	var queryparams = getDataBaseConfig();
+	if(queryparams){
+		$.ajax({
+        	url: '/dbreport/testConnection.do',
+        	type: 'post',
+        	data: queryparams,
+        	dataType: "json",
+        	async:false,
+        	success: function (data) {
+            	if (data.code == "200") {
+            		layer.msg('连接成功');
+            		dbtest = true;
+            	} else{
+            		dbtest = false;
+            		layer.msg('连接失败'); 
+            	}
+        	},
+        	error: function () {
+        		dbtest = false;
+        		layer.msg('连接失败'); 
+        	}
+    	});
+	}
+});
+function getDataBaseConfig(){
+	var dburl = $(".dbreportform input[name=dburl]").val();
+	  if(null == dburl || undefined == dburl || dburl.length < 1){
+		  layer.msg('请输入数据库链接地址'); 
+		  return false;
+	  }
+	  var username = $(".dbreportform input[name=username]").val();
+	  if(null == username || undefined == username || username.length < 1){
+		  layer.msg('请输入用户名'); 
+		  return false;
+	  }
+	  var password = $(".dbreportform input[name=password]").val();
+	  if(null == password || undefined == password || password.length < 1){
+		  layer.msg('请输入密码'); 
+		  return false;
+	  }
+	  var dbdriver = $(".dbreportform [name=dbdriver]").val();
+	  if(null == dbdriver || undefined == dbdriver || dbdriver.length < 1){
+		  layer.msg('请选择驱动类型'); 
+		  return false;
+	  }
+	  var arr = dburl.split('?');
+	  arr = arr[0].split('/');
+	  var dbname = arr[arr.length - 1];
+	  var params = {
+		"dburl":dburl,
+		"username":username,
+		"password":password,
+		"dbdriver":dbdriver,
+		"dbname":dbname
+	  };
+	  return params;
+}
+</script>
+</body>
+</html>
